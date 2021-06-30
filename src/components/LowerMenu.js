@@ -32,6 +32,7 @@ export default function LowerMenu() {
 const Container = styled.div`
   position: fixed;
   bottom: 0;
+  left: 0;
 
   ul {
     display: flex;
