@@ -5,6 +5,7 @@ import meals from '../mocks/arrayFoods';
 import drinks from '../mocks/arrayDrinks';
 import categoriesDrinks from '../mocks/categoriesDrinks';
 import categoriesFoods from '../mocks/categoriesFoods';
+import userEvent from '@testing-library/user-event';
 
 describe('25 - implemente os elementos da tela principal de receitas'
   + 'respeitando os atributos decrutos no protótipo', () => {
@@ -50,6 +51,7 @@ describe('27 - Implemente os botões de categoria para'
   + 'serem utilizados como filtro', () => {
   it('Caso as receitas sejam de bebidas, deve-se'
   + 'exibir as 5 primeiras categorias de comida', () => {
+    const { getByTestId } = renderWithRouter(<ScreenRecipes />);
     categoriesFoods.forEach((_drink, index) => {
       const foodTestIdCategoriesFoods = getByTestId(`${index}-category-filter`);
       expect(foodTestIdCategoriesFoods).toBeIntheDocument();
@@ -58,6 +60,7 @@ describe('27 - Implemente os botões de categoria para'
 
   it('Caso as receitas sejam de bebidas, deve-se'
     + 'exibir as 5 primeiras categorias de comida', () => {
+    const { getByTestId } = renderWithRouter(<ScreenRecipes />);
     categoriesDrinks.forEach((_drink, index) => {
       const foodTestIdCategoriesDrinks = getByTestId(`${index}-category-filter`);
       expect(foodTestIdCategoriesDrinks).toBeIntheDocument();
@@ -65,7 +68,28 @@ describe('27 - Implemente os botões de categoria para'
   });
 });
 
-// describe('28 - Implemente o filtro das receitas'
-//   + 'através da API ao clicar no filtro de categoria', () => {
-//   it() 
-//   });
+describe('28 - Implemente o filtro das receitas'
+  + 'através da API ao clicar no filtro de categoria', () => {
+  it('Caso as receitas sejam de comida e a categoria seja'
+  + '"Beef", deve-se carregar as 12 primeiras receitas de "Beef"', () => {
+    const { getByRole } = renderWithRouter(<ScreenRecipes />);
+    const button = getByRole('button', { name: /beef/i });
+    userEvent.click(button);
+    expect()
+  });
+});
+
+describe('31 - Desenvolva o filtro de categorias com a opção'
+  + ' de filtrar por todas as categorias', () => {
+  const { getByTestId, history } = renderWithRouter(<ScreenRecipes />);
+  
+});
+
+describe('32 - Redirecione a pessoa usuária, ao clicar no card, para a tela'
+   + ' de detalhes, que deve mudar a rota e conter o id da receita na URL', () => {
+  const { getByTestId, history } = renderWithRouter(<ScreenRecipes />);
+  const element = meals[0];
+  const card = getByTestId('1-recipe-card');
+  userEvent.click(card);
+  expect(history.location.pathname).toBe(`/comidas/${element.idMeal}`);
+});
