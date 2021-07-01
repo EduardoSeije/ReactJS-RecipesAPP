@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import app from '../configs/configs';
+import AppContext from '../contexts/app/AppContext';
 
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 
 export default function LowerMenu() {
+  const { setScreenActive } = useContext(AppContext);
+  const history = useHistory();
   return (
     <Container data-testid="footer">
       <ul>
         <li>
-          <button type="button" data-testid="drinks-bottom-btn">
+          <button
+            type="button"
+            data-testid="drinks-bottom-btn"
+            onClick={ () => {
+              setScreenActive(app.screens.drink);
+              history.push('/bebidas');
+            } }
+          >
             <img src={ drinkIcon } alt="Drink icon" />
           </button>
         </li>
