@@ -27,7 +27,13 @@ export default function LowerMenu() {
           </button>
         </li>
         <li>
-          <button type="button" data-testid="explore-bottom-btn">
+          <button
+            type="button"
+            data-testid="explore-bottom-btn"
+            onClick={ () => {
+              history.push('/explorar');
+            } }
+          >
             <img src={ exploreIcon } alt="Explore icon" />
           </button>
         </li>
