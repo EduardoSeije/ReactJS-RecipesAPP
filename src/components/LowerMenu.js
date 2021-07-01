@@ -32,7 +32,14 @@ export default function LowerMenu() {
           </button>
         </li>
         <li>
-          <button type="button" data-testid="food-bottom-btn">
+          <button
+            type="button"
+            data-testid="food-bottom-btn"
+            onClick={ () => {
+              setScreenActive(app.screens.food);
+              history.push('/comidas');
+            } }
+          >
             <img src={ mealIcon } alt="Meal icon" />
           </button>
         </li>
