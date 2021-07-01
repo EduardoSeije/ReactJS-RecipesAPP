@@ -76,6 +76,10 @@ describe('28 - Implemente o filtro das receitas'
     const button = getByRole('button', { name: /beef/i });
     userEvent.click(button);
     expect()
+    // waitForChange()
+    // dia 15.2
+    // trybeWallet
+
   });
 });
 
