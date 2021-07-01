@@ -13,22 +13,11 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Home } />
         <Route path="/perfil" component={ Perfil } />
-        {/* <Route path="/comidas" component={} />
-        <Route path="/bebidas" component={} />
-        <Route path="/comidas/{id-da-receita}" component={} />
-        <Route path="/comidas/{id-da-receita}/in-progress" component={} />
-        <Route path="/bebidas/{id-da-receita}/in-progress" component={} />
-        <Route path="/explorar" component={} />
-        <Route path="/explorar/comidas" component={} />
-        <Route path="/explorar/bebidas" component={} />
-        <Route path="/explorar/comidas/ingredientes" component={} />
-        <Route path="/explorar/bebidas/ingredientes" component={} />
-        <Route path="/explorar/comidas/area" component={} />
-        <Route path="/comidas" component={ MainRecipes } />
-        <Route path="/bebidas" component={ MainRecipes } />
-        {/* <Route path="/comidas/{id-da-receita}" component={} />
-        <Route path="/comidas/{id-da-receita}/in-progress" component={} />
-        <Route path="/bebidas/{id-da-receita}/in-progress" component={} /> */}
+        <Route exact path="/comidas" component={ MainRecipes } />
+        <Route exact path="/bebidas" component={ MainRecipes } />
+        <Route path="/comidas/{id-da-receita}" component={ MainRecipes } />
+        <Route path="/comidas/{id-da-receita}/in-progress" component={ MainRecipes } />
+        <Route path="/bebidas/{id-da-receita}/in-progress" component={ MainRecipes } />
         <Route exact path="/explorar" component={ Explore } />
         <Route exact path="/explorar/comidas" component={ Explore } />
         <Route exact path="/explorar/bebidas" component={ Explore } />
