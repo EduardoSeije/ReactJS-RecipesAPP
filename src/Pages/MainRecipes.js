@@ -4,11 +4,14 @@ import ButtonFilters from '../components/ButtonFilters';
 
 import LowerMenu from '../components/LowerMenu';
 
-export default function MainRecipes({ arrayCards, categories }) {
+export default function MainRecipes({ arrayCards, categories, functionChangeFilter }) {
   console.log(arrayCards);
   return (
     <div>
-      <ButtonFilters categories={ categories } />
+      <ButtonFilters
+        categories={ categories }
+        functionChangeFilter={ functionChangeFilter }
+      />
       <LowerMenu />
     </div>
   );
@@ -17,4 +20,5 @@ export default function MainRecipes({ arrayCards, categories }) {
 MainRecipes.propTypes = {
   arrayCards: PropTypes.arrayOf(PropTypes.object).isRequired,
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  functionChangeFilter: PropTypes.func.isRequired,
 };

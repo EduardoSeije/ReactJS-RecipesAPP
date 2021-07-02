@@ -10,8 +10,9 @@ import DrinksProvider from './contexts/drinks/DrinksContext';
 import MealsProvider from './contexts/foods/FoodContext';
 
 function App() {
-  const { categoriesDrinks, drinksRecipes } = useContext(DrinksProvider);
-  const { categoriesFoods, mealsRecipes } = useContext(MealsProvider);
+  const { categoriesDrinks, drinksRecipes,
+    setFiltersDrinks } = useContext(DrinksProvider);
+  const { categoriesFoods, mealsRecipes, setFiltersFoods } = useContext(MealsProvider);
 
   return (
     <div className="meals">
@@ -24,6 +25,7 @@ function App() {
           render={ (props) => (
             <MainRecipes
               { ...props }
+              functionChangeFilter={ setFiltersDrinks }
               categories={ categoriesDrinks }
               arrayCards={ drinksRecipes }
             />) }
@@ -34,6 +36,7 @@ function App() {
           render={ (props) => (
             <MainRecipes
               { ...props }
+              functionChangeFilter={ setFiltersFoods }
               categories={ categoriesFoods }
               arrayCards={ mealsRecipes }
             />) }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function ButtonFilters({ categories }) {
+export default function ButtonFilters({ categories, functionChangeFilter }) {
   const [filtersButtons, setFiltersButton] = useState([]);
 
   function showFilters() {
@@ -12,7 +12,8 @@ export default function ButtonFilters({ categories }) {
 
   function changeFilters(event) {
     const element = event.target.innerHTML;
-    console.log(element);
+    functionChangeFilter(element === 'All' ? '' : element);
+    console.log(element === 'All' ? '' : element);
   }
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function ButtonFilters({ categories }) {
 
   return (
     <div>
+      <button type="button" onClick={ changeFilters }>All</button>
       {filtersButtons.map((category, index) => (
         <button
           type="button"
@@ -37,4 +39,5 @@ export default function ButtonFilters({ categories }) {
 
 ButtonFilters.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  functionChangeFilter: PropTypes.func.isRequired,
 };

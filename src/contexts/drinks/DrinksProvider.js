@@ -7,23 +7,26 @@ import DrinksContext from './DrinksContext';
 function DrinksProvider({ children }) {
   const [searchBar] = useState('');
   const [categoriesDrinks, setCategories] = useState([]);
-  const [filters] = useState([]);
+  const [filtersDrinks, setFiltersDrinks] = useState('');
   const [drinksRecipes, setDrinks] = useState([]);
 
   async function fetchApiDrinks() {
-    setDrinks(await resultApiDrinks());
+    const icon = filtersDrinks ? 'c' : 's';
+    const search = filtersDrinks ? 'filter' : 'search';
+    setDrinks(await resultApiDrinks(search, icon, filtersDrinks));
     setCategories(await resultApiDrinks('list', 'c', 'list'));
   }
 
   useEffect(() => {
     fetchApiDrinks();
-  }, []);
+  }, [filtersDrinks]);
 
   const value = {
     searchBar,
-    filters,
+    filtersDrinks,
     categoriesDrinks,
     drinksRecipes,
+    setFiltersDrinks,
   };
   return (
     <DrinksContext.Provider value={ value }>

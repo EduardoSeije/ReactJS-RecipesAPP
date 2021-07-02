@@ -6,7 +6,7 @@ import FoodContext from './FoodContext';
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
   const [categoriesFoods, setCategories] = useState([]);
-  const [filters] = useState('');
+  const [filters, setFiltersFoods] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
 
   async function fetchApiMeals() {
@@ -23,7 +23,9 @@ function FoodProvider({ children }) {
     filters,
     categoriesFoods,
     mealsRecipes,
+    setFiltersFoods,
   };
+
   return (
     <FoodContext.Provider value={ value }>
       { children }
