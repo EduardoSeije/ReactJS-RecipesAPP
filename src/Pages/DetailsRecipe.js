@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import HeaderPhoto from '../components/DetailsRecipe/HeaderPhoto';
 import AppContext from '../contexts/app/AppContext';
+import TitleRecipe from '../components/DetailsRecipe/TitleRecipe';
 
 export default function DetailsRecipe(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,15 +29,17 @@ export default function DetailsRecipe(props) {
   return (
     <Container>
       <HeaderPhoto item={ screenActive === 'food' ? item.meals : item.drinks } />
-      {/* <TitleRecipe title={ meal.meals } data-testid="recipe-title" /> */}
-      {/* <ShareButton data-testid="share-btn" />
-      <FavoriteButton data-testid="favorite-btn" />
-      <TextCategory data-testid="recipe-category" />
-      <Ingredients data-testid="${index}-ingredient-name-and-measure" />
-      <TextIntructions data-testid="instructions" />
-      { screenActive === 'food' && <VideoRecipe data-testid="video" /> }
-      <RecommendedRecipes data-testid="${index}-recomendation-card" />
-      <StartRecipeButton data-testid="start-recipe-btn" /> */}
+      <Content>
+        <TitleRecipe item={ screenActive === 'food' ? item.meals : item.drinks } />
+        {/* <ShareButton data-testid="share-btn" />
+        <FavoriteButton data-testid="favorite-btn" />
+        <TextCategory data-testid="recipe-category" />
+        <Ingredients data-testid="${index}-ingredient-name-and-measure" />
+        <TextIntructions data-testid="instructions" />
+        { screenActive === 'food' && <VideoRecipe data-testid="video" /> }
+        <RecommendedRecipes data-testid="${index}-recomendation-card" />
+        <StartRecipeButton data-testid="start-recipe-btn" /> */}
+      </Content>
     </Container>
   );
 }
@@ -50,10 +53,15 @@ DetailsRecipe.propTypes = {
 };
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+`;
+
+const Content = styled.div`
+  width: 96%;
+  height: 100%;
 `;

@@ -3,40 +3,43 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-export default function HeaderPhoto(props) {
+export default function TitleRecipe(props) {
   const { item } = props;
   return (
     <Container>
       {
         item.length
           && (
-            <img
-              data-testid="recipe-photo"
-              src={ item[0].strMealThumb }
-              alt="Imagem da receita"
-            />
+            <h3
+              data-testid="recipe-title"
+            >
+              { item[0].strMeal }
+            </h3>
           )
       }
     </Container>
   );
 }
 
-HeaderPhoto.propTypes = {
+TitleRecipe.propTypes = {
   item: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-HeaderPhoto.defaultProps = {
+TitleRecipe.defaultProps = {
   item: {},
 };
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   max-height: 150px;
   display: flex;
 
-  img {
-    width: 100%;
-    height: 100%;
+  h3 {
+    color: black;
+    margin: 0;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 10px;
   }
 `;
