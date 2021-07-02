@@ -14,11 +14,25 @@ import VideoRecipe from '../components/DetailsRecipe/VideRecipe';
 import RecommendedRecipes from '../components/DetailsRecipe/RecommendedRecipes';
 import StartRecipeButton from '../components/DetailsRecipe/StartRecipeButton';
 
+import user from '../configs/configs';
+
 export default function DetailsRecipe(props) {
+  const { screens: { drink, food } } = user;
+  const url = window.location.href;
   const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState({});
   const { match: { params: { id } } } = props;
-  const { screenActive } = useContext(AppContext);
+  const { screenActive, setScreenActive } = useContext(AppContext);
+  const tags = screenActive === 'food' ? item.meals : item.drinks;
+
+  useEffect(() => {
+    if (/bebidas/.test(url)) {
+      setScreenActive(drink);
+    } else {
+      setScreenActive(food);
+    }
+  }, []);
+
   useEffect(() => {
     setIsLoading(true);
     const getItem = async () => {
@@ -30,29 +44,25 @@ export default function DetailsRecipe(props) {
       setIsLoading(false);
     };
     getItem();
-  }, []);
-  if (isLoading) {
-    return <p>Carregando...</p>;
-  }
+  }, [screenActive]);
+  if (isLoading) return <p>Carregando...</p>;
   return (
     <Container>
-      <HeaderPhoto item={ screenActive === 'food' ? item.meals : item.drinks } />
+      <HeaderPhoto item={ tags } />
       <Content>
-        <TitleRecipe item={ screenActive === 'food' ? item.meals : item.drinks } />
-        <ShareButton item={ screenActive === 'food' ? item.meals : item.drinks } />
-        <FavoriteButton item={ screenActive === 'food' ? item.meals : item.drinks } />
-        <TextCategory item={ screenActive === 'food' ? item.meals : item.drinks } />
-        <Ingredients item={ screenActive === 'food' ? item.meals : item.drinks } />
-        <TextInstructions item={ screenActive === 'food' ? item.meals : item.drinks } />
+        <TitleRecipe item={ tags } />
+        <ShareButton item={ tags } />
+        <FavoriteButton item={ tags } />
+        <TextCategory item={ tags } />
+        <Ingredients item={ tags } />
+        <TextInstructions item={ tags } />
         {
           screenActive === 'food' && <VideoRecipe
-            item={
-              screenActive === 'food' ? item.meals : item.drinks
-            }
+            item={ tags }
           />
         }
-        <RecommendedRecipes item={ screenActive === 'food' ? item.meals : item.drinks } />
-        <StartRecipeButton item={ screenActive === 'food' ? item.meals : item.drinks } />
+        <RecommendedRecipes item={ tags } />
+        <StartRecipeButton item={ tags } />
       </Content>
     </Container>
   );
