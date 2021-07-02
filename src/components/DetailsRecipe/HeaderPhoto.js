@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export default function HeaderPhoto(props) {
-  const { image } = props;
+  const { item } = props;
   return (
     <Container>
       {
-        image
+        item.length
           && (
             <img
               data-testid="recipe-photo"
-              src={ image[0].strMealThumb }
+              src={ item[0].strMealThumb }
               alt="Imagem da receita"
             />
           )
@@ -22,7 +22,11 @@ export default function HeaderPhoto(props) {
 }
 
 HeaderPhoto.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  item: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
+
+HeaderPhoto.defaultProps = {
+  item: {},
 };
 
 const Container = styled.div`

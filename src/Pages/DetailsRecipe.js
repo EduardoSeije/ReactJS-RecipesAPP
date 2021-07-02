@@ -1,24 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import HeaderPhoto from '../components/DetailsRecipe/HeaderPhoto';
+import AppContext from '../contexts/app/AppContext';
 
 export default function DetailsRecipe(props) {
-  const [meal, setMeal] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [item, setItem] = useState({});
   const { match: { params: { id } } } = props;
+  const { screenActive } = useContext(AppContext);
   useEffect(() => {
-    const getMeal = async () => {
-      const data = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then((res) => res.json());
-      setMeal(data);
+    setIsLoading(true);
+    const getItem = async () => {
+      const API = screenActive === 'food'
+        ? 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='
+        : 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
+      const data = await fetch(`${API}${id}`).then((res) => res.json());
+      setItem(data);
+      setIsLoading(false);
     };
-    getMeal();
+    getItem();
   }, []);
+  if (isLoading) {
+    return <p>Carregando...</p>;
+  }
   return (
     <Container>
-      <HeaderPhoto image={ meal.meals } />
-      {/* <TitleRecipe data-testid="recipe-title" />
-      <ShareButton data-testid="share-btn" />
+      <HeaderPhoto item={ screenActive === 'food' ? item.meals : item.drinks } />
+      {/* <TitleRecipe title={ meal.meals } data-testid="recipe-title" /> */}
+      {/* <ShareButton data-testid="share-btn" />
       <FavoriteButton data-testid="favorite-btn" />
       <TextCategory data-testid="recipe-category" />
       <Ingredients data-testid="${index}-ingredient-name-and-measure" />
@@ -33,7 +44,7 @@ export default function DetailsRecipe(props) {
 DetailsRecipe.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     }),
   }).isRequired,
 };
