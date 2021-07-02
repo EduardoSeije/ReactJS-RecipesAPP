@@ -1,5 +1,5 @@
-async function apiDrinks() {
-  const api = await (await (fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s='))).json();
+async function apiDrinks(category = '', icon = 's', str = 'search') {
+  const api = await (await (fetch(`https://www.thecocktaildb.com/api/json/v1/1/${str}.php?${icon}=${category}`))).json();
   return api.drinks;
 }
 

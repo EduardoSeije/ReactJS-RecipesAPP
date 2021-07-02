@@ -6,11 +6,12 @@ import DrinksContext from './DrinksContext';
 
 function DrinksProvider({ children }) {
   const [searchBar] = useState('');
-  const [filters] = useState('');
+  const [filters, setFilters] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
   async function fetchApiDrinks() {
     setDrinks(await resultApiDrinks());
+    setFilters(await resultApiDrinks('list', 'c', 'list'));
   }
 
   useEffect(() => {

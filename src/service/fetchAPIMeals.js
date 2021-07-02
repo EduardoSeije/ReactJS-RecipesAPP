@@ -1,5 +1,5 @@
-async function apiMeals() {
-  const api = await (await (fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='))).json();
+async function apiMeals(category = '', icon = 's', str = 'search') {
+  const api = await (await (fetch(`https://www.themealdb.com/api/json/v1/1/${str}.php?${icon}=${category}`))).json();
   return api.meals;
 }
 
