@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import DrinksContext from '../contexts/drinks/DrinksContext';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-export default function ButtonFilters() {
+export default function ButtonFilters({ categories }) {
   const [filtersButtons, setFiltersButton] = useState([]);
-
-  const { filters } = useContext(DrinksContext);
 
   function showFilters() {
     const number = 5;
-    const arr = filters.filter((_category, index) => index < number);
+    const arr = categories.filter((_category, index) => index < number);
     setFiltersButton(arr);
     console.log(filtersButtons);
-    console.log(filters);
+    console.log(categories);
   }
 
   useEffect(() => {
     showFilters();
-  }, [filters]);
+  }, [categories]);
 
   return (
     <div>
@@ -32,3 +30,7 @@ export default function ButtonFilters() {
     </div>
   );
 }
+
+ButtonFilters.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
