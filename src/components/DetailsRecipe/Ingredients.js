@@ -51,8 +51,7 @@ Ingredients.defaultProps = {
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  max-height: 150px;
+  height: auto;
   display: flex;
 
   ul li {
