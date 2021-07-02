@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import resultApiDrinks from '../../service/fetchAPIDrinks';
 
 import DrinksContext from './DrinksContext';
 
 function DrinksProvider({ children }) {
   const [searchBar] = useState('');
   const [filters] = useState('');
-  const [drinks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
+
+  async function fetchApiDrinks() {
+    setDrinks(await resultApiDrinks());
+  }
+
+  useEffect(() => {
+    fetchApiDrinks();
+  }, []);
 
   const value = {
     searchBar,

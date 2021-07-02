@@ -4,6 +4,8 @@ import LowerMenu from '../components/LowerMenu';
 
 export default function MainRecipes() {
   return (
-    <LowerMenu />
+    <div>
+      <LowerMenu />
+    </div>
   );
 }

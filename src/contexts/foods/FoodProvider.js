@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
+import resultApiMeals from '../../service/fetchAPIMeals';
 import FoodContext from './FoodContext';
 
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
   const [filters] = useState('');
-  const [meals] = useState([]);
+  const [meals, setMeals] = useState([]);
+
+  async function fetchApiMeals() {
+    setMeals(await resultApiMeals());
+  }
+
+  useEffect(() => {
+    fetchApiMeals();
+  }, []);
 
   const value = {
     searchBar,

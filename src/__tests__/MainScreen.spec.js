@@ -79,7 +79,6 @@ describe('28 - Implemente o filtro das receitas'
     // waitForChange()
     // dia 15.2
     // trybeWallet
-
   });
 });
 
