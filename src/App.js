@@ -6,6 +6,7 @@ import Perfil from './Pages/Perfil';
 import Home from './Pages/Home';
 import MainRecipes from './Pages/MainRecipes';
 import Explore from './Pages/Explore';
+import DetailsRecipe from './Pages/DetailsRecipe';
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Route path="/perfil" component={ Perfil } />
         <Route exact path="/comidas" component={ MainRecipes } />
         <Route exact path="/bebidas" component={ MainRecipes } />
-        <Route path="/comidas/{id-da-receita}" component={ MainRecipes } />
-        <Route path="/comidas/{id-da-receita}/in-progress" component={ MainRecipes } />
-        <Route path="/bebidas/{id-da-receita}/in-progress" component={ MainRecipes } />
+        <Route path="/comidas/:id" component={ DetailsRecipe } />
+        <Route path="/bebidas/:id" component={ DetailsRecipe } />
+        <Route path="/comidas/:id/in-progress" component={ MainRecipes } />
+        <Route path="/bebidas/:id/in-progress" component={ MainRecipes } />
         <Route exact path="/explorar" component={ Explore } />
         <Route exact path="/explorar/comidas" component={ Explore } />
         <Route exact path="/explorar/bebidas" component={ Explore } />
