@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 function AppProvider({ children }) {
-  const [screenActive, setScreenActive] = useState('drink');
+  const [screenActive, setScreenActive] = useState('food');
 
   const value = {
     screenActive,
