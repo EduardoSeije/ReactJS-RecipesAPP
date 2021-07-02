@@ -8,8 +8,11 @@ export default function ButtonFilters({ categories }) {
     const number = 5;
     const arr = categories.filter((_category, index) => index < number);
     setFiltersButton(arr);
-    console.log(filtersButtons);
-    console.log(categories);
+  }
+
+  function changeFilters(event) {
+    const element = event.target.innerHTML;
+    console.log(element);
   }
 
   useEffect(() => {
@@ -23,6 +26,7 @@ export default function ButtonFilters({ categories }) {
           type="button"
           key={ index }
           data-testid={ `${category.strCategory}-category-filter` }
+          onClick={ changeFilters }
         >
           {category.strCategory}
         </button>
