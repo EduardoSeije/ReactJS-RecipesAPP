@@ -6,7 +6,7 @@ import FoodContext from './FoodContext';
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
   const [categoriesFoods, setCategories] = useState([]);
-  const [filters, setFilters] = useState('');
+  const [filters] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
 
   async function fetchApiMeals() {

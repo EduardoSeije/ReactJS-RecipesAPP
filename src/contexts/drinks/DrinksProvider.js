@@ -7,7 +7,7 @@ import DrinksContext from './DrinksContext';
 function DrinksProvider({ children }) {
   const [searchBar] = useState('');
   const [categoriesDrinks, setCategories] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [filters] = useState([]);
   const [drinksRecipes, setDrinks] = useState([]);
 
   async function fetchApiDrinks() {
