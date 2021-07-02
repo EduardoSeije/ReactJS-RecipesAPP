@@ -11,7 +11,11 @@ export default function Ingredients(props) {
     const maxItems = 20;
     for (let i = 1; i <= maxItems; i += 1) {
       if (item[0][`strIngredient${i}`]) {
-        ingredients.push(item[0][`strIngredient${i}`]);
+        const newEl = {
+          recipe: item[0][`strIngredient${i}`],
+          qnt: item[0][`strMeasure${i}`],
+        };
+        ingredients.push(newEl);
       }
     }
     return ingredients;
@@ -25,12 +29,12 @@ export default function Ingredients(props) {
             <ul>
               {
                 listIngredients()
-                  .map((ingredient, index) => (
+                  .map(({ recipe, qnt }, index) => (
                     <li
                       data-testid={ `${index}-ingredient-name-and-measure` }
                       key={ index }
                     >
-                      { ingredient }
+                      { `${recipe} - ${qnt}` }
                     </li>
                   ))
               }
