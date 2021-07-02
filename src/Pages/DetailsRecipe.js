@@ -11,6 +11,7 @@ import TextCategory from '../components/DetailsRecipe/TextCategory';
 import Ingredients from '../components/DetailsRecipe/Ingredients';
 import TextInstructions from '../components/DetailsRecipe/TextInstructions';
 import VideoRecipe from '../components/DetailsRecipe/VideRecipe';
+import RecommendedRecipes from '../components/DetailsRecipe/RecommendedRecipes';
 
 export default function DetailsRecipe(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,8 +50,8 @@ export default function DetailsRecipe(props) {
             }
           />
         }
-        {/* <RecommendedRecipes data-testid="${index}-recomendation-card" />
-        <StartRecipeButton data-testid="start-recipe-btn" /> */}
+        <RecommendedRecipes item={ screenActive === 'food' ? item.meals : item.drinks } />
+        {/* <StartRecipeButton data-testid="start-recipe-btn" /> */}
       </Content>
     </Container>
   );
