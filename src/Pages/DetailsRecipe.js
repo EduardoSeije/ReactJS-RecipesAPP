@@ -12,6 +12,7 @@ import Ingredients from '../components/DetailsRecipe/Ingredients';
 import TextInstructions from '../components/DetailsRecipe/TextInstructions';
 import VideoRecipe from '../components/DetailsRecipe/VideRecipe';
 import RecommendedRecipes from '../components/DetailsRecipe/RecommendedRecipes';
+import StartRecipeButton from '../components/DetailsRecipe/StartRecipeButton';
 
 export default function DetailsRecipe(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +52,7 @@ export default function DetailsRecipe(props) {
           />
         }
         <RecommendedRecipes item={ screenActive === 'food' ? item.meals : item.drinks } />
-        {/* <StartRecipeButton data-testid="start-recipe-btn" /> */}
+        <StartRecipeButton item={ screenActive === 'food' ? item.meals : item.drinks } />
       </Content>
     </Container>
   );
