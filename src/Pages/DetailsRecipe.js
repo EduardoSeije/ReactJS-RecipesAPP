@@ -6,6 +6,7 @@ import HeaderPhoto from '../components/DetailsRecipe/HeaderPhoto';
 import AppContext from '../contexts/app/AppContext';
 import TitleRecipe from '../components/DetailsRecipe/TitleRecipe';
 import ShareButton from '../components/DetailsRecipe/ShareButton';
+import FavoriteButton from '../components/DetailsRecipe/FavoriteButton';
 
 export default function DetailsRecipe(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,8 +34,8 @@ export default function DetailsRecipe(props) {
       <Content>
         <TitleRecipe item={ screenActive === 'food' ? item.meals : item.drinks } />
         <ShareButton item={ screenActive === 'food' ? item.meals : item.drinks } />
-        {/* <FavoriteButton data-testid="favorite-btn" />
-        <TextCategory data-testid="recipe-category" />
+        <FavoriteButton item={ screenActive === 'food' ? item.meals : item.drinks } />
+        {/* <TextCategory data-testid="recipe-category" />
         <Ingredients data-testid="${index}-ingredient-name-and-measure" />
         <TextIntructions data-testid="instructions" />
         { screenActive === 'food' && <VideoRecipe data-testid="video" /> }
