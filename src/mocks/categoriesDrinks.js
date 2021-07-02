@@ -1,19 +1,19 @@
-const categoriesDrinks = [
-  {
-    strCategory: 'Ordinary Drink',
-  },
-  {
-    strCategory: 'Cocktail',
-  },
-  {
-    strCategory: 'Milk / Float / Shake',
-  },
-  {
-    strCategory: 'Other/Unknown',
-  },
-  {
-    strCategory: 'Cocoa',
-  },
-];
+// const categoriesDrinks = [
+//   {
+//     strCategory: 'Ordinary Drink',
+//   },
+//   {
+//     strCategory: 'Cocktail',
+//   },
+//   {
+//     strCategory: 'Milk / Float / Shake',
+//   },
+//   {
+//     strCategory: 'Other/Unknown',
+//   },
+//   {
+//     strCategory: 'Cocoa',
+//   },
+// ];
 
-export default categoriesDrinks;
+// export default categoriesDrinks;

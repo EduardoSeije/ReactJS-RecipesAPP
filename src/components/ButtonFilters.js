@@ -8,7 +8,7 @@ export default function ButtonFilters() {
 
   function showFilters() {
     const number = 5;
-    const arr = filters.filter((cate, index) => index < number);
+    const arr = filters.filter((_category, index) => index < number);
     setFiltersButton(arr);
     console.log(filtersButtons);
     console.log(filters);
