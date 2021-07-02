@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import AppContext from '../../contexts/app/AppContext';
 
 export default function TitleRecipe(props) {
+  const { screenActive } = useContext(AppContext);
   const { item } = props;
   return (
     <Container>
@@ -13,7 +15,7 @@ export default function TitleRecipe(props) {
             <h3
               data-testid="recipe-title"
             >
-              { item[0].strMeal }
+              { screenActive === 'food' ? item[0].strMeal : item[0].strDrink }
             </h3>
           )
       }

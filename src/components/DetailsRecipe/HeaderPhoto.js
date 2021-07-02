@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import AppContext from '../../contexts/app/AppContext';
 
 export default function HeaderPhoto(props) {
+  const { screenActive } = useContext(AppContext);
   const { item } = props;
   return (
     <Container>
@@ -12,7 +14,9 @@ export default function HeaderPhoto(props) {
           && (
             <img
               data-testid="recipe-photo"
-              src={ item[0].strMealThumb }
+              src={
+                screenActive === 'food' ? item[0].strMealThumb : item[0].strDrinkThumb
+              }
               alt="Imagem da receita"
             />
           )
