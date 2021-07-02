@@ -10,6 +10,7 @@ import FavoriteButton from '../components/DetailsRecipe/FavoriteButton';
 import TextCategory from '../components/DetailsRecipe/TextCategory';
 import Ingredients from '../components/DetailsRecipe/Ingredients';
 import TextInstructions from '../components/DetailsRecipe/TextInstructions';
+import VideoRecipe from '../components/DetailsRecipe/VideRecipe';
 
 export default function DetailsRecipe(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,8 +42,14 @@ export default function DetailsRecipe(props) {
         <TextCategory item={ screenActive === 'food' ? item.meals : item.drinks } />
         <Ingredients item={ screenActive === 'food' ? item.meals : item.drinks } />
         <TextInstructions item={ screenActive === 'food' ? item.meals : item.drinks } />
-        {/* { screenActive === 'food' && <VideoRecipe data-testid="video" /> }
-        <RecommendedRecipes data-testid="${index}-recomendation-card" />
+        {
+          screenActive === 'food' && <VideoRecipe
+            item={
+              screenActive === 'food' ? item.meals : item.drinks
+            }
+          />
+        }
+        {/* <RecommendedRecipes data-testid="${index}-recomendation-card" />
         <StartRecipeButton data-testid="start-recipe-btn" /> */}
       </Content>
     </Container>
