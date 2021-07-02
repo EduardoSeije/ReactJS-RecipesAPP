@@ -21,7 +21,13 @@ export default function ButtonFilters() {
   return (
     <div>
       {filtersButtons.map((category, index) => (
-        <button type="button" key={ index }>{category.strCategory}</button>
+        <button
+          type="button"
+          key={ index }
+          data-testid={ `${category.strCategory}-category-filter` }
+        >
+          {category.strCategory}
+        </button>
       ))}
     </div>
   );
