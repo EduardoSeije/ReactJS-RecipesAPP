@@ -77,6 +77,7 @@ const Container = styled.div`
     overflow-x: scroll;
     display: flex;
     padding: 20px;
+    margin-bottom: 80px;
   }
   
   ul li {

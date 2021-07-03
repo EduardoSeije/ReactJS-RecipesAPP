@@ -7,18 +7,15 @@ export default function StartRecipeButton(props) {
   const { item } = props;
 
   return (
-    <Container>
-      {
-        item.length
-          && (
-            <Button
-              data-testid="start-recipe-btn"
-            >
-              Iniciar Receita
-            </Button>
-          )
-      }
-    </Container>
+    item.length
+      ? (
+        <Button
+          data-testid="start-recipe-btn"
+        >
+          Iniciar Receita
+        </Button>
+      )
+      : null
   );
 }
 
@@ -30,15 +27,13 @@ StartRecipeButton.defaultProps = {
   item: {},
 };
 
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
 const Button = styled.button`
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 50px;
   background-color: green;
+  position: fixed;
+  bottom: 10px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 `;
