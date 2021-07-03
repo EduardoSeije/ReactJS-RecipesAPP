@@ -59,6 +59,9 @@ export default function DetailsRecipe(props) {
       <HeaderPhoto item={ tags } />
       <Content>
         <TitleRecipe item={ tags } />
+        <MessageClipboard className="message-clipboard">
+          Link copiado!
+        </MessageClipboard>
         <ShareButton item={ tags } />
         <FavoriteButton item={ tags } />
         <TextSubtitle item={ tags } />
@@ -96,4 +99,9 @@ const Container = styled.div`
 const Content = styled.div`
   width: 96%;
   height: 100%;
+`;
+
+const MessageClipboard = styled.span`
+  display: none;
+  color: green;
 `;

@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import copy from 'clipboard-copy';
 import ShareIcon from '../../images/shareIcon.svg';
 
 export default function ShareButton(props) {
+  const showMessageClipboard = () => {
+    document.querySelector('.message-clipboard').style.display = 'block';
+  };
   const { item } = props;
   return (
     <Container>
@@ -13,7 +17,10 @@ export default function ShareButton(props) {
           && (
             <button
               type="button"
-              onClick={ () => { console.log('Link copiado'); } }
+              onClick={ () => {
+                copy(window.location.href);
+                showMessageClipboard();
+              } }
             >
               <img
                 data-testid="share-btn"
