@@ -8,7 +8,7 @@ import CardRecommendeds from './CardRecommendeds';
 export default function RecommendedRecipes() {
   const [isLoading, setIsLoading] = useState(false);
   const [recommendations, setRecommendations] = useState([]);
-  const limitCards = 10;
+  const limitCards = 6;
 
   const { screenActive } = useContext(AppContext);
   const tags = screenActive === 'drink' ? recommendations.meals : recommendations.drinks;
