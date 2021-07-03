@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import AppContext from '../../contexts/app/AppContext';
 
-export default function TextCategory(props) {
+export default function TextSubtitle(props) {
+  const { screenActive } = useContext(AppContext);
   const { item } = props;
   return (
     <Container>
@@ -13,7 +15,7 @@ export default function TextCategory(props) {
             <h2
               data-testid="recipe-category"
             >
-              { item[0].strCategory }
+              { screenActive === 'food' ? item[0].strCategory : item[0].strAlcoholic }
             </h2>
           )
       }
@@ -21,11 +23,11 @@ export default function TextCategory(props) {
   );
 }
 
-TextCategory.propTypes = {
+TextSubtitle.propTypes = {
   item: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-TextCategory.defaultProps = {
+TextSubtitle.defaultProps = {
   item: {},
 };
 

@@ -7,7 +7,7 @@ import AppContext from '../contexts/app/AppContext';
 import TitleRecipe from '../components/DetailsRecipe/TitleRecipe';
 import ShareButton from '../components/DetailsRecipe/ShareButton';
 import FavoriteButton from '../components/DetailsRecipe/FavoriteButton';
-import TextCategory from '../components/DetailsRecipe/TextCategory';
+import TextSubtitle from '../components/DetailsRecipe/TextSubtitle';
 import Ingredients from '../components/DetailsRecipe/Ingredients';
 import TextInstructions from '../components/DetailsRecipe/TextInstructions';
 import VideoRecipe from '../components/DetailsRecipe/VideRecipe';
@@ -53,7 +53,7 @@ export default function DetailsRecipe(props) {
         <TitleRecipe item={ tags } />
         <ShareButton item={ tags } />
         <FavoriteButton item={ tags } />
-        <TextCategory item={ tags } />
+        <TextSubtitle item={ tags } />
         <Ingredients item={ tags } />
         <TextInstructions item={ tags } />
         {
