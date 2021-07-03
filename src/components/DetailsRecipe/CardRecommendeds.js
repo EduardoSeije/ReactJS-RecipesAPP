@@ -6,16 +6,22 @@ import styled from 'styled-components';
 export default function CardRecommendeds(props) {
   const [titleLocal, setTitleLocal] = useState('');
   const [imageLocal, setImageLocal] = useState('');
+  const [idLocal, setIdLocal] = useState('');
   useEffect(() => {
-    const { title, image } = props;
+    const { title, image, id } = props;
     setTitleLocal(title);
     setImageLocal(image);
+    setIdLocal(id);
   }, []);
   return (
 
     <Container>
       <img src={ imageLocal } alt="Imagem da comida" />
-      <h3>{ titleLocal }</h3>
+      <h3
+        data-testid={ `${idLocal}-recomendation-title` }
+      >
+        { titleLocal }
+      </h3>
     </Container>
 
   );
@@ -24,6 +30,7 @@ export default function CardRecommendeds(props) {
 CardRecommendeds.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 const Container = styled.div`

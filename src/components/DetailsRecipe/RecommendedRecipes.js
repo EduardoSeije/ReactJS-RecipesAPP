@@ -52,6 +52,7 @@ export default function RecommendedRecipes() {
                       title={
                         screenActive === 'food' ? recommend.strDrink : recommend.strMeal
                       }
+                      id={ i }
                       image={
                         screenActive === 'food'
                           ? recommend.strDrinkThumb : recommend.strMealThumb
