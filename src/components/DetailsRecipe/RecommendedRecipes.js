@@ -18,8 +18,8 @@ export default function RecommendedRecipes() {
     let active = true;
     const getRecommendations = async () => {
       const API = screenActive === 'drink'
-        ? 'https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast'
-        : 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail';
+        ? 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+        : 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
       const data = await fetch(`${API}`).then((res) => res.json());
       if (active) {
         setRecommendations(data);
