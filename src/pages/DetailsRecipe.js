@@ -21,9 +21,17 @@ export default function DetailsRecipe(props) {
   const url = window.location.href;
   const [isLoading, setIsLoading] = useState(false);
   const [item, setItem] = useState({});
+  const [doneRecipe, setDoneRecipe] = useState([]);
   const { match: { params: { id } } } = props;
   const { screenActive, setScreenActive } = useContext(AppContext);
   const tags = screenActive === 'food' ? item.meals : item.drinks;
+
+  useEffect(() => {
+    const dataLS = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (dataLS) {
+      setDoneRecipe(dataLS);
+    }
+  }, []);
 
   useEffect(() => {
     if (/bebidas/.test(url)) {
@@ -62,7 +70,7 @@ export default function DetailsRecipe(props) {
           />
         }
         <RecommendedRecipes />
-        <StartRecipeButton item={ tags } />
+        { !doneRecipe.length ? <StartRecipeButton item={ tags } /> : null }
       </Content>
     </Container>
   );
