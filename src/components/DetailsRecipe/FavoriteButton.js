@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
-import FavoriteIcon from '../../images/blackHeartIcon.svg';
+import FavoriteIconEnabled from '../../images/blackHeartIcon.svg';
+import FavoriteIconDisabled from '../../images/whiteHeartIcon.svg';
 
 export default function FavoriteButton(props) {
   const { item } = props;
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    if (dataLS) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, []);
+
   return (
     <Container>
       {
@@ -13,11 +26,13 @@ export default function FavoriteButton(props) {
           && (
             <button
               type="button"
-              onClick={ () => { console.log('Link favoritado'); } }
+              onClick={ () => {
+                setIsFavorite(!isFavorite);
+              } }
             >
               <img
                 data-testid="favorite-btn"
-                src={ FavoriteIcon }
+                src={ isFavorite ? FavoriteIconEnabled : FavoriteIconDisabled }
                 alt="Compartilhar"
               />
             </button>
