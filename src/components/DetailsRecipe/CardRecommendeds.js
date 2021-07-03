@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export default function CardRecommendeds(props) {
   const [titleLocal, setTitleLocal] = useState('');
   const [imageLocal, setImageLocal] = useState('');
-  const [idLocal, setIdLocal] = useState('');
+  const [idLocal, setIdLocal] = useState(0);
   useEffect(() => {
     const { title, image, id } = props;
     setTitleLocal(title);
@@ -30,7 +30,7 @@ export default function CardRecommendeds(props) {
 CardRecommendeds.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 const Container = styled.div`
