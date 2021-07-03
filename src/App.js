@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Perfil from './Pages/Perfil';
-import Home from './Pages/Home';
-import MainRecipes from './Pages/MainRecipes';
-import Explore from './Pages/Explore';
-import DetailsRecipe from './Pages/DetailsRecipe';
+import Perfil from './pages/Perfil';
+import Home from './pages/Home';
+import MainRecipes from './pages/MainRecipes';
+import Explore from './pages/Explore';
+import DetailsRecipe from './pages/DetailsRecipe';
 
 function App() {
   return (

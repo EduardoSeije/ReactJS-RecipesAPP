@@ -61,7 +61,7 @@ export default function DetailsRecipe(props) {
             item={ tags }
           />
         }
-        <RecommendedRecipes item={ tags } />
+        <RecommendedRecipes />
         <StartRecipeButton item={ tags } />
       </Content>
     </Container>
