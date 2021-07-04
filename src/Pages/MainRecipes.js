@@ -16,7 +16,7 @@ export default function MainRecipes({ arrayCards, categories, functionChangeFilt
     </div>
   );
 }
-
+// resolve conflicts
 MainRecipes.propTypes = {
   arrayCards: PropTypes.arrayOf(PropTypes.object).isRequired,
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
