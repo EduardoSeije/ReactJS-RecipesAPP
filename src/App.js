@@ -52,10 +52,11 @@ function App() {
         <Route path="/explorar/comidas/area" component={ Explore } />
         {/*
         <Route path="/receitas-feitas" component={} />
-        <Route path="/receitas-favoritas." component={} /> */}
+      <Route path="/receitas-favoritas." component={} /> */}
       </Switch>
     </div>
   );
+  /* fix conflicts */
 }
 
 export default App;
