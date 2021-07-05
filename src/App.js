@@ -2,11 +2,13 @@ import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Perfil from './pages/Perfil';
-import Home from './pages/Home';
-import MainRecipes from './pages/MainRecipes';
-import Explore from './pages/Explore';
-import DetailsRecipe from './pages/DetailsRecipe';
+import Home from './Pages/Home';
+import Perfil from './Pages/Perfil';
+import MainRecipes from './Pages/MainRecipes';
+import Explore from './Pages/Explore';
+import DetailsRecipe from './Pages/DetailsRecipe';
+import FinishedRecipies from './Pages/FinishedRecipies';
+import FavoriteRecepies from './Pages/FavoriteRecepies';
 
 function App() {
   return (
@@ -26,9 +28,8 @@ function App() {
         <Route path="/explorar/comidas/ingredientes" component={ Explore } />
         <Route path="/explorar/bebidas/ingredientes" component={ Explore } />
         <Route path="/explorar/comidas/area" component={ Explore } />
-        {/* <Route path="/perfil" component={} />
-        <Route path="/receitas-feitas" component={} />
-        <Route path="/receitas-favoritas." component={} /> */}
+        <Route path="/receitas-feitas" component={ FinishedRecipies } />
+        <Route path="/receitas-favoritas" component={ FavoriteRecepies } />
       </Switch>
     </div>
   );
