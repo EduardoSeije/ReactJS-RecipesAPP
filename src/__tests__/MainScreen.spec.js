@@ -5,7 +5,7 @@ import meals from '../mocks/arrayFoods';
 import drinks from '../mocks/arrayDrinks';
 import categoriesDrinks from '../mocks/categoriesDrinks';
 import categoriesFoods from '../mocks/categoriesFoods';
-import userEvent from '@testing-library/user-event';
+// import userEvent from '@testing-library/user-event';
 
 describe('25 - implemente os elementos da tela principal de receitas'
   + 'respeitando os atributos decrutos no protótipo', () => {
