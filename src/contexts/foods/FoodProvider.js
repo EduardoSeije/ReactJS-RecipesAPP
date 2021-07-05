@@ -6,21 +6,23 @@ import FoodContext from './FoodContext';
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
   const [categoriesFoods, setCategories] = useState([]);
-  const [filters, setFiltersFoods] = useState('');
+  const [filtersFoods, setFiltersFoods] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
 
   async function fetchApiMeals() {
-    setMeals(await resultApiMeals());
+    const icon = filtersFoods ? 'c' : 's';
+    const seach = filtersFoods ? 'filter' : 'search';
+    setMeals(await resultApiMeals(seach, icon, filtersFoods));
     setCategories(await resultApiMeals('list', 'c', 'list'));
   }
 
   useEffect(() => {
     fetchApiMeals();
-  }, []);
+  }, [filtersFoods]);
 
   const value = {
     searchBar,
-    filters,
+    filtersFoods,
     categoriesFoods,
     mealsRecipes,
     setFiltersFoods,

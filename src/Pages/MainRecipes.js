@@ -4,7 +4,6 @@ import ButtonFilters from '../components/ButtonFilters';
 import LowerMenu from '../components/LowerMenu';
 
 export default function MainRecipes({ categories, functionChangeFilter }) {
-
   return (
     <div>
       <ButtonFilters

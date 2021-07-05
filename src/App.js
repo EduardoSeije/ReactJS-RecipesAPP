@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import './App.css';
 import { Route, Switch } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Perfil from './Pages/Perfil';
 import Home from './Pages/Home';
 import MainRecipes from './Pages/MainRecipes';
 import Explore from './Pages/Explore';
 import DrinksProvider from './contexts/drinks/DrinksContext';
 import MealsProvider from './contexts/foods/FoodContext';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const { categoriesDrinks, drinksRecipes,
