@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
+import resultApiMeals from '../../service/fetchAPIMeals';
 import FoodContext from './FoodContext';
 
 function FoodProvider({ children }) {
@@ -9,6 +9,9 @@ function FoodProvider({ children }) {
   const [radio, setRadio] = useState('');
   const [filters] = useState('');
   const [meals] = useState([]);
+  const [categoriesFoods, setCategories] = useState([]);
+  const [filtersFoods, setFiltersFoods] = useState('');
+  const [mealsRecipes, setMeals] = useState([]);
 
   const value = {
     searchBar,
@@ -18,7 +21,23 @@ function FoodProvider({ children }) {
     setIngredient,
     radio,
     setRadio,
+    filtersFoods,
+    categoriesFoods,
+    mealsRecipes,
+    setFiltersFoods,
   };
+
+  async function fetchApiMeals() {
+    const icon = filtersFoods ? 'c' : 's';
+    const seach = filtersFoods ? 'filter' : 'search';
+    setMeals(await resultApiMeals(seach, icon, filtersFoods));
+    setCategories(await resultApiMeals('list', 'c', 'list'));
+  }
+
+  useEffect(() => {
+    fetchApiMeals();
+  }, [filtersFoods]);
+
   return (
     <FoodContext.Provider value={ value }>
       { children }

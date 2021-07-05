@@ -9,7 +9,7 @@ function SearchBar() {
   };
 
   const handleRadios = ({ target }) => {
-    setRadio(target.value);
+    setRadio(target.id);
   };
 
   useEffect(() => {
@@ -59,7 +59,13 @@ function SearchBar() {
         />
         Busca pela primeira letra
       </label>
-      <button data-testid="exec-search-btn" type="button" onClick={ console.log(radio) }>Buscar</button>
+      <button
+        data-testid="exec-search-btn"
+        type="button"
+        onClick={ console.log(radio) }
+      >
+        Buscar
+      </button>
     </div>
   );
 }
