@@ -5,7 +5,8 @@ import FoodContext from './FoodContext';
 
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
-  const [ingredient, setingredient] = useState('');
+  const [ingredient, setIngredient] = useState('');
+  const [radio, setRadio] = useState('');
   const [filters] = useState('');
   const [meals] = useState([]);
 
@@ -14,7 +15,9 @@ function FoodProvider({ children }) {
     filters,
     meals,
     ingredient,
-    setingredient,
+    setIngredient,
+    radio,
+    setRadio,
   };
   return (
     <FoodContext.Provider value={ value }>
