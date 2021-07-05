@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Perfil from './Pages/Perfil';
-import Home from './Pages/Home';
-import MainRecipes from './Pages/MainRecipes';
-import Explore from './Pages/Explore';
+import Home from './pages/Home';
+import Perfil from './pages/Perfil';
+import MainRecipes from './pages/MainRecipes';
+import Explore from './pages/Explore';
 import DrinksProvider from './contexts/drinks/DrinksContext';
 import MealsProvider from './contexts/foods/FoodContext';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import DetailsRecipe from './pages/DetailsRecipe';
+import FinishedRecipies from './pages/FinishedRecipies';
+import FavoriteRecepies from './pages/FavoriteRecepies';
 
 function App() {
   const { categoriesDrinks, drinksRecipes,
@@ -50,13 +53,11 @@ function App() {
         <Route path="/explorar/comidas/ingredientes" component={ Explore } />
         <Route path="/explorar/bebidas/ingredientes" component={ Explore } />
         <Route path="/explorar/comidas/area" component={ Explore } />
-        {/*
-        <Route path="/receitas-feitas" component={} />
-      <Route path="/receitas-favoritas." component={} /> */}
+        <Route path="/receitas-feitas" component={ FinishedRecipies } />
+        <Route path="/receitas-favoritas" component={ FavoriteRecepies } />
       </Switch>
     </div>
   );
-  /* fix conflicts */
 }
 
 export default App;

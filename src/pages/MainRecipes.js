@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ButtonFilters from '../components/ButtonFilters';
+import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
 
 export default function MainRecipes({ categories, functionChangeFilter }) {
@@ -10,6 +11,7 @@ export default function MainRecipes({ categories, functionChangeFilter }) {
         categories={ categories }
         functionChangeFilter={ functionChangeFilter }
       />
+      <Header />
       <LowerMenu />
     </div>
   );
