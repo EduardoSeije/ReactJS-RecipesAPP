@@ -5,6 +5,7 @@ import FoodContext from './FoodContext';
 
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
+  const [ingredient, setingredient] = useState('');
   const [filters] = useState('');
   const [meals] = useState([]);
 
@@ -12,6 +13,8 @@ function FoodProvider({ children }) {
     searchBar,
     filters,
     meals,
+    ingredient,
+    setingredient,
   };
   return (
     <FoodContext.Provider value={ value }>

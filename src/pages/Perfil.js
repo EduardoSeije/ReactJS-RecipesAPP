@@ -4,7 +4,7 @@ import LowerMenu from '../components/LowerMenu';
 
 const Perfil = () => (
   <div>
-    <Header />
+    <Header title="Perfil" />
     <h1>Página de Perfil</h1>
     <LowerMenu />
   </div>
