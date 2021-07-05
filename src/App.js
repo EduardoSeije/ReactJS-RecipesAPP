@@ -8,7 +8,7 @@ import DrinksProvider from './contexts/drinks/DrinksContext';
 import MealsProvider from './contexts/foods/FoodContext';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import DetailsRecipe from './pages/DetailsRecipe';
+import DetailsRecipe from './pages/DetailsRecipe';
 import FinishedRecipies from './pages/FinishedRecipies';
 import FavoriteRecepies from './pages/FavoriteRecepies';
 
@@ -44,9 +44,8 @@ function App() {
               arrayCards={ mealsRecipes }
             />) }
         />
-        <Route path="/comidas/{id-da-receita}" component={ MainRecipes } />
-        <Route path="/comidas/{id-da-receita}/in-progress" component={ MainRecipes } />
-        <Route path="/bebidas/{id-da-receita}/in-progress" component={ MainRecipes } />
+        <Route path="/comidas/:id/in-progress" component={ MainRecipes } />
+        <Route path="/bebidas/:id/in-progress" component={ MainRecipes } />
         <Route exact path="/explorar" component={ Explore } />
         <Route exact path="/explorar/comidas" component={ Explore } />
         <Route exact path="/explorar/bebidas" component={ Explore } />
@@ -55,6 +54,8 @@ function App() {
         <Route path="/explorar/comidas/area" component={ Explore } />
         <Route path="/receitas-feitas" component={ FinishedRecipies } />
         <Route path="/receitas-favoritas" component={ FavoriteRecepies } />
+        <Route path="/comidas/:id" component={ DetailsRecipe } />
+        <Route path="/bebidas/:id" component={ DetailsRecipe } />
       </Switch>
     </div>
   );
