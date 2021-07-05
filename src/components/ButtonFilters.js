@@ -13,7 +13,6 @@ export default function ButtonFilters({ categories, functionChangeFilter }) {
   function changeFilters(event) {
     const element = event.target.innerHTML;
     functionChangeFilter(element === 'All' ? '' : element);
-    console.log(element === 'All' ? '' : element);
   }
 
   useEffect(() => {
