@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import resultApiDrinks from '../../service/fetchAPIDrinks';
-
 import DrinksContext from './DrinksContext';
 
 function DrinksProvider({ children }) {
