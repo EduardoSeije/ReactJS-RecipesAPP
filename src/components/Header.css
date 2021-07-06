@@ -22,14 +22,14 @@ button {
   width: 100px;
 }
 
-#cards-div img {
-  margin: 10px;
+#card-img {
   height: 80px;
+  margin: 10px;
   width: 80px;
 }
 
-#cards-div h2 {
-  font-size: 10px;
+#card-h2 {
+  font-size: 5px;
   text-align: center;
   top: 0;
 }
