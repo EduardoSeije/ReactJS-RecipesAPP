@@ -1,4 +1,4 @@
-#cards-div {
+/* #cards-div {
   display: flex;
   flex-flow: column;
   height: 100px;
@@ -21,4 +21,4 @@
   display: flex;
   flex-flow: row wrap;
   max-width: 500px;
-}
+} */
