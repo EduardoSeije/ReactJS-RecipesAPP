@@ -1,20 +1,40 @@
 import React, { useContext, useEffect } from 'react';
 import FoodContext from '../contexts/foods/FoodContext';
+import { requestMealFirstLetter,
+  requestMealIngredient, requestMealName } from '../service/apiRequests';
 
 function SearchBar() {
-  const { ingredient, setIngredient, radio, setRadio } = useContext(FoodContext);
+  const { ingredient, setIngredient,
+    radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
   const handleText = ({ target }) => {
     setIngredient(target.value);
-    console.log(ingredient);
   };
 
   const handleRadios = ({ target }) => {
     setRadio(target.id);
+    console.log(radio);
   };
 
-  useEffect(() => {
+  async function fetchApiSearch() {
+    if (radio === 'search-ingredient') {
+      setMealsSearch(await requestMealIngredient(ingredient));
+    }
+    if (radio === 'search-name') {
+      setMealsSearch(await requestMealName(ingredient));
+    }
+    if (radio === 'search-first-letter' && ingredient.length <= 1) {
+      setMealsSearch(await requestMealFirstLetter(ingredient));
+    } else if (radio === 'search-first-letter' && ingredient.length > 1) {
+      alert('Sua busca deve conter somente 1 (um) caracter');
+    }
+  }
 
-  }, []);
+  useEffect(() => {
+    fetchApiSearch();
+  }, [ingredient]);
+
+  console.log(meals);
+  console.log(ingredient.length);
 
   return (
     <div>

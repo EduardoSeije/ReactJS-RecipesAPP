@@ -8,7 +8,7 @@ function FoodProvider({ children }) {
   const [ingredient, setIngredient] = useState('');
   const [radio, setRadio] = useState('');
   const [filters] = useState('');
-  const [meals] = useState([]);
+  const [meals, setMealsSearch] = useState([]);
   const [categoriesFoods, setCategories] = useState([]);
   const [filtersFoods, setFiltersFoods] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
@@ -25,6 +25,7 @@ function FoodProvider({ children }) {
     categoriesFoods,
     mealsRecipes,
     setFiltersFoods,
+    setMealsSearch,
   };
 
   async function fetchApiMeals() {

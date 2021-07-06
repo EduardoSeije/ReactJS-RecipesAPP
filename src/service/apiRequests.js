@@ -1,7 +1,7 @@
 export async function requestMealIngredient(ingredient) {
   const fetchAPI = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
   const response = await fetchAPI.json();
-  return response;
+  return response.meals;
 }
 
 export async function requestMealName(name) {
