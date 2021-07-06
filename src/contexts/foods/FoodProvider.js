@@ -5,9 +5,28 @@ import FoodContext from './FoodContext';
 
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
+  const [ingredient, setIngredient] = useState('');
+  const [radio, setRadio] = useState('');
+  const [filters] = useState('');
+  const [meals, setMealsSearch] = useState([]);
   const [categoriesFoods, setCategories] = useState([]);
   const [filtersFoods, setFiltersFoods] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
+
+  const value = {
+    searchBar,
+    filters,
+    meals,
+    ingredient,
+    setIngredient,
+    radio,
+    setRadio,
+    filtersFoods,
+    categoriesFoods,
+    mealsRecipes,
+    setFiltersFoods,
+    setMealsSearch,
+  };
 
   async function fetchApiMeals() {
     const icon = filtersFoods ? 'c' : 's';
@@ -19,14 +38,6 @@ function FoodProvider({ children }) {
   useEffect(() => {
     fetchApiMeals();
   }, [filtersFoods]);
-
-  const value = {
-    searchBar,
-    filtersFoods,
-    categoriesFoods,
-    mealsRecipes,
-    setFiltersFoods,
-  };
 
   return (
     <FoodContext.Provider value={ value }>

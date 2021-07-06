@@ -7,11 +7,11 @@ import LowerMenu from '../components/LowerMenu';
 export default function MainRecipes({ categories, functionChangeFilter }) {
   return (
     <div>
+      <Header />
       <ButtonFilters
         categories={ categories }
         functionChangeFilter={ functionChangeFilter }
       />
-      <Header />
       <LowerMenu />
     </div>
   );

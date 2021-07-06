@@ -10,6 +10,8 @@ function Header() {
   const handleToggle = () => {
     setIsHidden(!isHidden);
   };
+  const pageTitle = (window.location.pathname).substr(1);
+  const title = pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1);
   return (
     <div>
       <div className="header-wrapper">
@@ -18,7 +20,7 @@ function Header() {
             <img src={ profileIcon } alt="profile-icon" />
           </button>
         </Link>
-        <h1 data-testid="page-title">Comida</h1>
+        <h1 data-testid="page-title">{ title }</h1>
         <button
           type="button"
           data-testid="search-top-btn"
