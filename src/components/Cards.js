@@ -1,6 +1,7 @@
 import React from 'react';
 import ProPTypes from 'prop-types';
 import { propTypes } from 'react-bootstrap/esm/Image';
+import './Header.css';
 
 function Cards({ index, thumbnail, name }) {
   return (
