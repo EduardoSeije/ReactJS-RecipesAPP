@@ -1,11 +1,16 @@
 import React, { useContext, useEffect } from 'react';
 import FoodContext from '../contexts/foods/FoodContext';
+import DrinksContext from '../contexts/drinks/DrinksContext';
 import { requestMealFirstLetter,
   requestMealIngredient, requestMealName } from '../service/apiRequests';
+import { requestDrinkFirstLetter,
+  requestDrinkIngredient, requestDrinkName } from '../service/apiRequestsDrinks';
 
 function SearchBar() {
   const { ingredient, setIngredient,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
+  const { setDrinksSearch, drinks } = useContext(DrinksContext);
+
   const handleText = ({ target }) => {
     setIngredient(target.value);
   };
@@ -15,26 +20,50 @@ function SearchBar() {
     console.log(radio);
   };
 
-  async function fetchApiSearch() {
-    if (radio === 'search-ingredient') {
+  const searchName = 'search-name';
+  const searchIngredient = 'search-ingredient';
+  const searchFirstLetter = 'search-first-letter';
+  async function fetchMealsApiSearch() {
+    if (radio === searchIngredient) {
       setMealsSearch(await requestMealIngredient(ingredient));
     }
-    if (radio === 'search-name') {
+    if (radio === searchName) {
       setMealsSearch(await requestMealName(ingredient));
     }
-    if (radio === 'search-first-letter' && ingredient.length <= 1) {
+    if (radio === searchFirstLetter && ingredient.length <= 1) {
       setMealsSearch(await requestMealFirstLetter(ingredient));
-    } else if (radio === 'search-first-letter' && ingredient.length > 1) {
+    } else if (radio === searchFirstLetter && ingredient.length > 1) {
+      alert('Sua busca deve conter somente 1 (um) caracter');
+    }
+  }
+
+  async function fetchDrinksApiSearch() {
+    if (radio === searchIngredient) {
+      setDrinksSearch(await requestDrinkIngredient(ingredient));
+    }
+    if (radio === searchName) {
+      setDrinksSearch(await requestDrinkName(ingredient));
+    }
+    if (radio === searchFirstLetter && ingredient.length <= 1) {
+      setDrinksSearch(await requestDrinkFirstLetter(ingredient));
+    } else if (radio === searchFirstLetter && ingredient.length > 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
     }
   }
 
   useEffect(() => {
-    fetchApiSearch();
+    if (window.location.pathname === '/comidas') {
+      fetchMealsApiSearch();
+    }
+    if (window.location.pathname === '/bebidas') {
+      fetchDrinksApiSearch();
+    }
   }, [ingredient]);
 
   console.log(meals);
-  console.log(ingredient.length);
+  console.log(drinks);
+  // console.log(ingredient.length);
+  console.log(window.location.pathname);
 
   return (
     <div>
