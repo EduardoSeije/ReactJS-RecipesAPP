@@ -8,6 +8,7 @@ function DrinksProvider({ children }) {
   const [categoriesDrinks, setCategories] = useState([]);
   const [filtersDrinks, setFiltersDrinks] = useState('');
   const [drinksRecipes, setDrinks] = useState([]);
+  const [drinks, setDrinksSearch] = useState([]);
 
   async function fetchApiDrinks() {
     const icon = filtersDrinks ? 'c' : 's';
@@ -26,6 +27,8 @@ function DrinksProvider({ children }) {
     categoriesDrinks,
     drinksRecipes,
     setFiltersDrinks,
+    drinks,
+    setDrinksSearch,
   };
   return (
     <DrinksContext.Provider value={ value }>
