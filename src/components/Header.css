@@ -1,0 +1,16 @@
+button {
+  height: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+.notHidden {
+  display: initial;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}

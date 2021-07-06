@@ -1,11 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .meals {
   align-items: center;
-  background: #60dfae;
+  background: #fafafa;
   color: #464646;
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
-  height: 100vh;
+  height: auto;
   justify-content: center;
   width: 100%;
 }
