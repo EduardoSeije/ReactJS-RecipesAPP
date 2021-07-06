@@ -150,7 +150,7 @@ describe('Teste as funcionalidade ao clicar no botão.', () => {
     const buttonSubmt = getByTestId(user.btnTestId);
     expect(buttonSubmt).not.toBeDisabled();
     userEvent.click(buttonSubmt);
-    // Mochando as funções do localStorage
+    // Mochando as funções do localStorage.
     const localStorageMock = {
       setItem: jest.fn(), // Mockando a função setItem
       getItem: jest.fn(), // Mockando a função getItem
