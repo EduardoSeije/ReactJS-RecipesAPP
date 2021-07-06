@@ -9,6 +9,7 @@ function DrinksProvider({ children }) {
   const [filtersDrinks, setFiltersDrinks] = useState('');
   const [drinksRecipes, setDrinks] = useState([]);
   const [drinks, setDrinksSearch] = useState([]);
+  const [drinksToMap, setDrinksToMap] = useState([]);
 
   async function fetchApiDrinks() {
     const icon = filtersDrinks ? 'c' : 's';
@@ -19,6 +20,7 @@ function DrinksProvider({ children }) {
 
   useEffect(() => {
     fetchApiDrinks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filtersDrinks]);
 
   const value = {
@@ -29,6 +31,8 @@ function DrinksProvider({ children }) {
     setFiltersDrinks,
     drinks,
     setDrinksSearch,
+    drinksToMap,
+    setDrinksToMap,
   };
   return (
     <DrinksContext.Provider value={ value }>

@@ -14,3 +14,28 @@ button {
   display: flex;
   flex-flow: row nowrap;
 }
+
+#cards-div {
+  max-width: 100px;
+  max-height: 100px;
+  display: flex;
+  flex-flow: column;
+}
+
+#cards-div img {
+  max-width: 80px;
+  max-height: 80px;
+  margin: 10px 10px;
+}
+
+#cards-div h2 {
+  font-size: 10px;
+  text-align: center;
+  top: 0;
+}
+
+#mapped-cards {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 500px;
+}

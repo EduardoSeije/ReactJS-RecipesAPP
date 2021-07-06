@@ -7,9 +7,10 @@ import { requestDrinkFirstLetter,
   requestDrinkIngredient, requestDrinkName } from '../service/apiRequestsDrinks';
 
 function SearchBar() {
-  const { ingredient, setIngredient,
+  const { ingredient, setIngredient, mealsToMap, setMealsToMap,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
-  const { setDrinksSearch, drinks } = useContext(DrinksContext);
+  const { setDrinksSearch, drinks,
+    setDrinksToMap } = useContext(DrinksContext);
 
   const handleText = ({ target }) => {
     setIngredient(target.value);
@@ -17,7 +18,6 @@ function SearchBar() {
 
   const handleRadios = ({ target }) => {
     setRadio(target.id);
-    console.log(radio);
   };
 
   const searchName = 'search-name';
@@ -47,7 +47,7 @@ function SearchBar() {
     if (radio === searchFirstLetter && ingredient.length <= 1) {
       setDrinksSearch(await requestDrinkFirstLetter(ingredient));
     } else if (radio === searchFirstLetter && ingredient.length > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
+      global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
   }
 
@@ -58,12 +58,25 @@ function SearchBar() {
     if (window.location.pathname === '/bebidas') {
       fetchDrinksApiSearch();
     }
-  }, [ingredient]);
+  }, [ingredient, mealsToMap]);
 
   console.log(meals);
-  console.log(drinks);
-  // console.log(ingredient.length);
-  console.log(window.location.pathname);
+  // console.log(drinks);
+  // console.log(radio);
+  // console.log(mealsToMap);
+  // console.log(drinksToMap);
+  const path = window.location.pathname;
+  function handleClick(e) {
+    e.preventDefault();
+    if (path === '/comidas' && meals.length > 1) {
+      setMealsToMap(meals);
+      setDrinksToMap('');
+    }
+    if (path === '/bebidas') {
+      setDrinksToMap(drinks);
+      setMealsToMap('');
+    }
+  }
 
   return (
     <div>
@@ -111,11 +124,12 @@ function SearchBar() {
       <button
         data-testid="exec-search-btn"
         type="button"
-        onClick={ console.log(radio) }
+        onClick={ handleClick }
       >
         Buscar
       </button>
     </div>
+
   );
 }
 
