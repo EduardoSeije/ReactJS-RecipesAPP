@@ -16,16 +16,16 @@ button {
 }
 
 #cards-div {
-  max-width: 100px;
-  max-height: 100px;
   display: flex;
   flex-flow: column;
+  height: 100px;
+  width: 100px;
 }
 
 #cards-div img {
-  max-width: 80px;
-  max-height: 80px;
-  margin: 10px 10px;
+  margin: 10px;
+  height: 80px;
+  width: 80px;
 }
 
 #cards-div h2 {

@@ -7,14 +7,19 @@ import Header from '../components/Header';
 import Cards from '../components/Cards';
 import LowerMenu from '../components/LowerMenu';
 
-export default function MainRecipes({ categories, functionChangeFilter }) {
+export default function MainRecipes({ categories,
+  functionChangeFilter, elementFilter, setToggle, toggle }) {
   const { mealsToMap } = useContext(FoodContext);
   const { drinksToMap } = useContext(DrinksContext);
   const twelve = 12;
+
   return (
     <div>
       <Header />
       <ButtonFilters
+        toggle={ toggle }
+        setToggle={ setToggle }
+        elementFilter={ elementFilter }
         categories={ categories }
         functionChangeFilter={ functionChangeFilter }
       />
@@ -46,4 +51,7 @@ export default function MainRecipes({ categories, functionChangeFilter }) {
 MainRecipes.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
   functionChangeFilter: PropTypes.func.isRequired,
+  elementFilter: PropTypes.string.isRequired,
+  setToggle: PropTypes.func.isRequired,
+  toggle: PropTypes.bool.isRequired,
 };

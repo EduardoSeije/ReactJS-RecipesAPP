@@ -14,8 +14,10 @@ import FavoriteRecepies from './pages/FavoriteRecepies';
 
 function App() {
   const { categoriesDrinks, drinksRecipes,
-    setFiltersDrinks } = useContext(DrinksProvider);
-  const { categoriesFoods, mealsRecipes, setFiltersFoods } = useContext(MealsProvider);
+    setFiltersDrinks, filtersDrinks, setToggleDrinks,
+    toggleDrinks } = useContext(DrinksProvider);
+  const { categoriesFoods, mealsRecipes, setFiltersFoods,
+    filtersFoods, setToggleFoods, toggleFoods } = useContext(MealsProvider);
 
   return (
     <div className="meals">
@@ -28,6 +30,9 @@ function App() {
           render={ (props) => (
             <MainRecipes
               { ...props }
+              toggle={ toggleDrinks }
+              setToggle={ setToggleDrinks }
+              elementFilter={ filtersDrinks }
               functionChangeFilter={ setFiltersDrinks }
               categories={ categoriesDrinks }
               arrayCards={ drinksRecipes }
@@ -39,6 +44,9 @@ function App() {
           render={ (props) => (
             <MainRecipes
               { ...props }
+              toggle={ toggleFoods }
+              setToggle={ setToggleFoods }
+              elementFilter={ filtersFoods }
               functionChangeFilter={ setFiltersFoods }
               categories={ categoriesFoods }
               arrayCards={ mealsRecipes }
