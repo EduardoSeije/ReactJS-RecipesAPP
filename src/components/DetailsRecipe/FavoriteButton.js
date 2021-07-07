@@ -7,6 +7,45 @@ import FavoriteIconDisabled from '../../images/whiteHeartIcon.svg';
 
 import AppContext from '../../contexts/app/AppContext';
 
+const getFavoriteRecipes = () => {
+  const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  return dataLS || false;
+};
+
+const addToFavorites = (el, activeScreen) => {
+  const data = getFavoriteRecipes();
+  let newEl;
+
+  if (activeScreen === 'food') {
+    newEl = {
+      id: el.idMeal,
+      name: el.strMeal,
+      type: 'comida',
+      image: el.strMealThumb,
+      alcoholicOrNot: el.strAlcoholic || '',
+      category: el.strCategory,
+      area: el.strArea || '',
+    };
+  } else {
+    newEl = {
+      id: el.idDrink,
+      name: el.strDrink,
+      type: 'bebida',
+      image: el.strDrinkThumb,
+      alcoholicOrNot: el.strAlcoholic || '',
+      category: el.strCategory,
+      area: el.strArea || '',
+    };
+  }
+
+  if (data.length) {
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...data, newEl]));
+  } else {
+    console.log(newEl);
+    localStorage.setItem('favoriteRecipes', JSON.stringify([{ ...newEl }]));
+  }
+};
+
 const checkIsFavorite = (item, screenActive, setIsFavorite) => {
   const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (item[0] && dataLS) {
@@ -41,6 +80,7 @@ export default function FavoriteButton(props) {
               type="button"
               onClick={ () => {
                 setIsFavorite(!isFavorite);
+                addToFavorites(item[0], screenActive);
               } }
             >
               <img
