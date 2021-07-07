@@ -9,7 +9,7 @@ function Cards({ index, thumbnail, name, id }) {
 
   return (
     <div className="">
-      <Link to={ `${pathname}${id}` }>
+      <Link to={ `${pathname}/${id}` }>
         <div
           id={ id }
           className="cards-div"
