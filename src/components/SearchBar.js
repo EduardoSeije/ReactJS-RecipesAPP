@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import FoodContext from '../contexts/foods/FoodContext';
 import DrinksContext from '../contexts/drinks/DrinksContext';
 import { requestMealFirstLetter,
@@ -19,6 +20,7 @@ function SearchBar() {
   const handleRadios = ({ target }) => {
     setRadio(target.id);
   };
+
   const path = window.location.pathname;
   const searchName = 'search-name';
   const searchIngredient = 'search-ingredient';
@@ -66,20 +68,25 @@ function SearchBar() {
   console.log(radio);
   console.log(mealsToMap);
   console.log(drinksToMap);
+  const history = useHistory();
   function handleClick() {
     if (path === '/comidas' && meals === null) {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
       setMealsSearch('');
-    } else if (path === '/comidas' && meals.length >= 1) {
+    } else if (path === '/comidas' && meals.length > 1) {
       setMealsToMap(meals);
       setDrinksToMap('');
+    } else if (path === '/comidas' && meals.length === 1) {
+      history.push(`comidas/${meals[0].idMeal}`);
     }
     if (path === '/bebidas' && drinks === null) {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
       setDrinksSearch('');
-    } else if (path === '/bebidas' && drinks.length >= 1) {
+    } else if (path === '/bebidas' && drinks.length > 1) {
       setDrinksToMap(drinks);
       setMealsToMap('');
+    } else if (path === '/bebidas' && drinks.length === 1) {
+      history.push(`bebidas/${drinks[0].idDrink}`);
     }
   }
 
