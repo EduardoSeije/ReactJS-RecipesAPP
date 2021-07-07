@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import FoodContext from '../contexts/foods/FoodContext';
 import DrinksContext from '../contexts/drinks/DrinksContext';
 import { requestMealFirstLetter,
@@ -7,9 +8,10 @@ import { requestDrinkFirstLetter,
   requestDrinkIngredient, requestDrinkName } from '../service/apiRequestsDrinks';
 
 function SearchBar() {
-  const { ingredient, setIngredient,
+  const { ingredient, setIngredient, mealsToMap, setMealsToMap,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
-  const { setDrinksSearch, drinks } = useContext(DrinksContext);
+  const { setDrinksSearch, drinks,
+    setDrinksToMap, drinksToMap } = useContext(DrinksContext);
 
   const handleText = ({ target }) => {
     setIngredient(target.value);
@@ -17,9 +19,9 @@ function SearchBar() {
 
   const handleRadios = ({ target }) => {
     setRadio(target.id);
-    console.log(radio);
   };
 
+  const path = window.location.pathname;
   const searchName = 'search-name';
   const searchIngredient = 'search-ingredient';
   const searchFirstLetter = 'search-first-letter';
@@ -33,7 +35,7 @@ function SearchBar() {
     if (radio === searchFirstLetter && ingredient.length <= 1) {
       setMealsSearch(await requestMealFirstLetter(ingredient));
     } else if (radio === searchFirstLetter && ingredient.length > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
+      global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
   }
 
@@ -47,13 +49,14 @@ function SearchBar() {
     if (radio === searchFirstLetter && ingredient.length <= 1) {
       setDrinksSearch(await requestDrinkFirstLetter(ingredient));
     } else if (radio === searchFirstLetter && ingredient.length > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
+      global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
   }
 
   useEffect(() => {
     if (window.location.pathname === '/comidas') {
-      fetchMealsApiSearch();
+      fetchMealsApiSearch().then(() => {
+      });
     }
     if (window.location.pathname === '/bebidas') {
       fetchDrinksApiSearch();
@@ -62,8 +65,30 @@ function SearchBar() {
 
   console.log(meals);
   console.log(drinks);
-  // console.log(ingredient.length);
-  console.log(window.location.pathname);
+  console.log(radio);
+  console.log(mealsToMap);
+  console.log(drinksToMap);
+  const history = useHistory();
+  function handleClick() {
+    if (path === '/comidas' && meals === null) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      setMealsSearch('');
+    } else if (path === '/comidas' && meals.length > 1) {
+      setMealsToMap(meals);
+      setDrinksToMap('');
+    } else if (path === '/comidas' && meals.length === 1) {
+      history.push(`comidas/${meals[0].idMeal}`);
+    }
+    if (path === '/bebidas' && drinks === null) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      setDrinksSearch('');
+    } else if (path === '/bebidas' && drinks.length > 1) {
+      setDrinksToMap(drinks);
+      setMealsToMap('');
+    } else if (path === '/bebidas' && drinks.length === 1) {
+      history.push(`bebidas/${drinks[0].idDrink}`);
+    }
+  }
 
   return (
     <div>
@@ -111,11 +136,12 @@ function SearchBar() {
       <button
         data-testid="exec-search-btn"
         type="button"
-        onClick={ console.log(radio) }
+        onClick={ handleClick }
       >
         Buscar
       </button>
     </div>
+
   );
 }
 

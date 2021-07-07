@@ -12,6 +12,7 @@ function FoodProvider({ children }) {
   const [categoriesFoods, setCategories] = useState([]);
   const [filtersFoods, setFiltersFoods] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
+  const [mealsToMap, setMealsToMap] = useState([]);
   const [toggleFoods, setToggleFoods] = useState(false);
 
   const value = {
@@ -27,6 +28,8 @@ function FoodProvider({ children }) {
     mealsRecipes,
     setFiltersFoods,
     setMealsSearch,
+    mealsToMap,
+    setMealsToMap,
     toggleFoods,
     setToggleFoods,
   };
