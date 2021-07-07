@@ -6,7 +6,7 @@ import './Header.css';
 function Cards({ index, thumbnail, name }) {
   return (
     <div
-      id="cards-div"
+      className="cards-div"
       data-testid={ `${index}-recipe-card` }
     >
       <img

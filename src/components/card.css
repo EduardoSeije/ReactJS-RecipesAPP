@@ -1,9 +1,9 @@
-/* #cards-div {
+.cards-div {
   display: flex;
   flex-flow: column;
   height: 100px;
   width: 100px;
-} */
+}
 
 .card-img {
   height: 80px;
@@ -17,9 +17,9 @@
   top: 0;
 }
 
-/* 
-#mapped-cards {
+
+.mapped-cards {
   display: flex;
   flex-flow: row wrap;
   max-width: 500px;
-} */
+}

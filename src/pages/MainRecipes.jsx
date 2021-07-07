@@ -23,7 +23,7 @@ export default function MainRecipes({ categories,
         categories={ categories }
         functionChangeFilter={ functionChangeFilter }
       />
-      <div id="mapped-cards">
+      <div className="mapped-cards">
         {mealsToMap && mealsToMap.length > 0 ? mealsToMap
           .slice(0, twelve).map((meal, index) => (
             <Cards
