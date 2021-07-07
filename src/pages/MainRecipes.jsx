@@ -6,6 +6,7 @@ import ButtonFilters from '../components/ButtonFilters';
 import Header from '../components/Header';
 import Cards from '../components/Cards';
 import LowerMenu from '../components/LowerMenu';
+import '../components/card.css';
 
 export default function MainRecipes({ categories,
   functionChangeFilter, elementFilter, setToggle, toggle }) {
