@@ -19,7 +19,7 @@ function SearchBar() {
   const handleRadios = ({ target }) => {
     setRadio(target.id);
   };
-
+  const path = window.location.pathname;
   const searchName = 'search-name';
   const searchIngredient = 'search-ingredient';
   const searchFirstLetter = 'search-first-letter';
@@ -33,7 +33,7 @@ function SearchBar() {
     if (radio === searchFirstLetter && ingredient.length <= 1) {
       setMealsSearch(await requestMealFirstLetter(ingredient));
     } else if (radio === searchFirstLetter && ingredient.length > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
+      global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
   }
 
@@ -53,25 +53,31 @@ function SearchBar() {
 
   useEffect(() => {
     if (window.location.pathname === '/comidas') {
-      fetchMealsApiSearch();
+      fetchMealsApiSearch().then(() => {
+      });
     }
     if (window.location.pathname === '/bebidas') {
       fetchDrinksApiSearch();
     }
-  }, [ingredient, mealsToMap, drinksToMap]);
+  }, [ingredient]);
 
-  // console.log(meals);
-  // console.log(drinks);
-  // console.log(radio);
-  // console.log(mealsToMap);
-  // console.log(drinksToMap);
-  const path = window.location.pathname;
+  console.log(meals);
+  console.log(drinks);
+  console.log(radio);
+  console.log(mealsToMap);
+  console.log(drinksToMap);
   function handleClick() {
-    if (path === '/comidas' && meals.length > 1) {
+    if (path === '/comidas' && meals === null) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      setMealsSearch('');
+    } else if (path === '/comidas' && meals.length >= 1) {
       setMealsToMap(meals);
       setDrinksToMap('');
     }
-    if (path === '/bebidas') {
+    if (path === '/bebidas' && drinks === null) {
+      global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      setDrinksSearch('');
+    } else if (path === '/bebidas' && drinks.length >= 1) {
       setDrinksToMap(drinks);
       setMealsToMap('');
     }

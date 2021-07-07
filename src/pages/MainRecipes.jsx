@@ -25,7 +25,7 @@ export default function MainRecipes({ categories,
         functionChangeFilter={ functionChangeFilter }
       />
       <div className="mapped-cards">
-        {mealsToMap && mealsToMap.length > 0 ? mealsToMap
+        {mealsToMap !== null && mealsToMap.length > 0 ? mealsToMap
           .slice(0, twelve).map((meal, index) => (
             <Cards
               key={ index }
@@ -34,7 +34,7 @@ export default function MainRecipes({ categories,
               thumbnail={ meal.strMealThumb }
             />
           )) : ''}
-        {drinksToMap && drinksToMap.length > 0 ? drinksToMap
+        {drinksToMap !== null && drinksToMap.length > 0 ? drinksToMap
           .slice(0, twelve).map((drink, index) => (
             <Cards
               key={ index }
