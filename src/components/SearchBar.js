@@ -10,7 +10,7 @@ function SearchBar() {
   const { ingredient, setIngredient, mealsToMap, setMealsToMap,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
   const { setDrinksSearch, drinks,
-    setDrinksToMap } = useContext(DrinksContext);
+    setDrinksToMap, drinksToMap } = useContext(DrinksContext);
 
   const handleText = ({ target }) => {
     setIngredient(target.value);
@@ -58,7 +58,7 @@ function SearchBar() {
     if (window.location.pathname === '/bebidas') {
       fetchDrinksApiSearch();
     }
-  }, [ingredient, mealsToMap]);
+  }, [ingredient, mealsToMap, drinksToMap]);
 
   // console.log(meals);
   // console.log(drinks);
