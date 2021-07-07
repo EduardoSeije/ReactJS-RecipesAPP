@@ -60,7 +60,7 @@ function SearchBar() {
     }
   }, [ingredient, mealsToMap]);
 
-  console.log(meals);
+  // console.log(meals);
   // console.log(drinks);
   // console.log(radio);
   // console.log(mealsToMap);
