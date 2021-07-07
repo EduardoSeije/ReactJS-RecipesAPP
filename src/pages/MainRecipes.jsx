@@ -30,6 +30,24 @@ export default function MainRecipes({ categories, arrayCards,
             thumbnail={ recipe.strMealThumb || recipe.strDrinkThumb }
           />
         ))}
+        {/* mealsToMap !== null && mealsToMap.length > 0 ? mealsToMap
+          .slice(0, twelve).map((meal, index) => (
+            <Cards
+              key={ index }
+              index={ index }
+              name={ meal.strMeal }
+              thumbnail={ meal.strMealThumb }
+            />
+          )) : ''} */}
+        {/* {drinksToMap !== null && drinksToMap.length > 0 ? drinksToMap
+          .slice(0, twelve).map((drink, index) => (
+            <Cards
+              key={ index }
+              index={ index }
+              name={ drink.strDrink }
+              thumbnail={ drink.strDrinkThumb }
+            />
+          )) : ''} */}
         <LowerMenu />
       </div>
     </div>
