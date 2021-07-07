@@ -12,6 +12,7 @@ function Header() {
   };
   const pageTitle = (window.location.pathname).substr(1);
   const title = pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1);
+
   return (
     <div>
       <div className="header-wrapper">
@@ -30,7 +31,7 @@ function Header() {
         </button>
       </div>
       <div id="search-bar" className={ isHidden ? 'hidden' : 'notHidden' }>
-        <SearchBar />
+        {isHidden ? <div /> : <SearchBar />}
       </div>
     </div>
   );

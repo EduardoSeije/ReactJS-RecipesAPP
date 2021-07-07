@@ -66,8 +66,7 @@ function SearchBar() {
   // console.log(mealsToMap);
   // console.log(drinksToMap);
   const path = window.location.pathname;
-  function handleClick(e) {
-    e.preventDefault();
+  function handleClick() {
     if (path === '/comidas' && meals.length > 1) {
       setMealsToMap(meals);
       setDrinksToMap('');
