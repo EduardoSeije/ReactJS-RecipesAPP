@@ -1,15 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../../contexts/app/AppContext';
 
+const getInProgressRecipes = () => {
+  const dataLS = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  return dataLS || false;
+};
+
 export default function StartRecipeButton(props) {
   const { screenActive } = useContext(AppContext);
   const history = useHistory();
   const { item } = props;
   const type = screenActive === 'food' ? 'comidas' : 'bebidas';
+  const [textButton, setTextButton] = useState('Iniciar Receita');
+
+  useEffect(() => {
+    const dataLS = getInProgressRecipes();
+    if (item.length && dataLS) {
+      console.log(item);
+      let check;
+      if (type === 'comidas') {
+        check = !!Object.keys(dataLS.meals).filter(
+          (key) => key === item[0].idMeal,
+        ).length;
+      } else {
+        check = !!Object.keys(dataLS.cocktails).filter(
+          (key) => key === item[0].idDrink,
+        ).length;
+      }
+      if (check) {
+        setTextButton('Continuar Receita');
+      }
+    }
+  }, [item]);
 
   return (
     item.length
@@ -24,7 +50,7 @@ export default function StartRecipeButton(props) {
             );
           } }
         >
-          Iniciar Receita
+          { textButton }
         </Button>
       )
       : null
