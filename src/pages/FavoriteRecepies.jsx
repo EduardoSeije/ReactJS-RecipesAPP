@@ -5,7 +5,11 @@ function FavoriteRecepies() {
   return (
     <div>
       <Header />
-      <h1>Componente FavoriteRecepies</h1>
+      <div>
+        <button type="button">All</button>
+        <button type="button">Foods</button>
+        <button type="button">Drinks</button>
+      </div>
     </div>
   );
 }
