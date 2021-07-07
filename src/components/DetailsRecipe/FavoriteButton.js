@@ -30,7 +30,7 @@ export default function FavoriteButton(props) {
 
   useEffect(() => {
     checkIsFavorite(item, screenActive, setIsFavorite);
-  }, []);
+  }, [item]);
 
   return (
     <Container>
