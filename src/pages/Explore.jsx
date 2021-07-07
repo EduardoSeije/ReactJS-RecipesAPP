@@ -6,6 +6,7 @@ export default function Explore() {
   return (
     <div>
       <Header />
+      <h1>Explore</h1>
       <LowerMenu />
     </div>
   );
