@@ -3,7 +3,7 @@
   flex-flow: column;
   height: 100px;
   width: 100px;
-}
+} */
 
 #card-img {
   height: 80px;
@@ -16,7 +16,7 @@
   text-align: center;
   top: 0;
 }
-
+/* 
 #mapped-cards {
   display: flex;
   flex-flow: row wrap;
