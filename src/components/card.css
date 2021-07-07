@@ -5,17 +5,18 @@
   width: 100px;
 } */
 
-#card-img {
+.card-img {
   height: 80px;
   margin: 10px;
   width: 80px;
 }
 
-#card-h2 {
+.card-h2 {
   font-size: 5px;
   text-align: center;
   top: 0;
 }
+
 /* 
 #mapped-cards {
   display: flex;

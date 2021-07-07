@@ -13,11 +13,11 @@ function Cards({ index, thumbnail, name }) {
         data-testid={ `${index}-card-img` }
         src={ thumbnail }
         alt={ `${index} recipe` }
-        id="card-img"
+        className="card-img"
       />
       <h2
         data-testid={ `${index}-card-name` }
-        id="card-h2"
+        className="card-h2"
       >
         { name }
       </h2>
