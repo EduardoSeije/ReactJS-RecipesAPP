@@ -23,3 +23,7 @@
   flex-flow: row wrap;
   max-width: 500px;
 }
+
+.buttonCards {
+  border: none;  
+}

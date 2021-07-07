@@ -23,11 +23,13 @@ export default function MainRecipes({ categories, arrayCards,
       <div className="mapped-cards">
         {arrayCards.filter((_obj, index) => index < twelve).map((recipe, index) => (
           <Cards
+            id={ recipe.idDrink || recipe.idMeal }
             key={ index }
             index={ index }
             name={ recipe.strMeal || recipe.strDrink }
             thumbnail={ recipe.strMealThumb || recipe.strDrinkThumb }
-          />))}
+          />
+        ))}
         <LowerMenu />
       </div>
     </div>
