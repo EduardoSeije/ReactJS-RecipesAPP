@@ -1,7 +1,6 @@
 import React from 'react';
 import ProPTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
-
 import { propTypes } from 'react-bootstrap/esm/Image';
 import './Header.css';
 

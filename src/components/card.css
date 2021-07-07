@@ -17,13 +17,8 @@
   top: 0;
 }
 
-
 .mapped-cards {
   display: flex;
   flex-flow: row wrap;
   max-width: 500px;
-}
-
-.buttonCards {
-  border: none;  
 }
