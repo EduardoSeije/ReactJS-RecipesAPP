@@ -20,7 +20,6 @@ export default function StartRecipeButton(props) {
   useEffect(() => {
     const dataLS = getInProgressRecipes();
     if (item.length && dataLS) {
-      console.log(item);
       let check;
       if (type === 'comidas') {
         check = !!Object.keys(dataLS.meals).filter(

@@ -1,22 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import FavoriteIconEnabled from '../../images/blackHeartIcon.svg';
 import FavoriteIconDisabled from '../../images/whiteHeartIcon.svg';
 
+import AppContext from '../../contexts/app/AppContext';
+
+const checkIsFavorite = (item, screenActive, setIsFavorite) => {
+  const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (item[0] && dataLS) {
+    if (screenActive === 'food') {
+      const check = !!dataLS.filter((recipe) => recipe.id === item[0].idMeal).length;
+      if (check) setIsFavorite(true);
+    } else {
+      const check = !!dataLS.filter((recipe) => recipe.id === item[0].idDrink).length;
+      if (check) setIsFavorite(true);
+    }
+  } else {
+    setIsFavorite(false);
+  }
+};
+
 export default function FavoriteButton(props) {
   const { item } = props;
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const { screenActive } = useContext(AppContext);
 
   useEffect(() => {
-    const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    if (dataLS) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
+    checkIsFavorite(item, screenActive, setIsFavorite);
   }, []);
 
   return (
