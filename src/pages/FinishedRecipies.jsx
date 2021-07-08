@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import copy from 'clipboard-copy';
 import Header from '../components/Header';
 
 import ShareImage from '../images/shareIcon.svg';
@@ -53,9 +54,17 @@ function FinishedRecipies() {
                       : `${recipe.alcoholicOrNot}`
                   }
                 </TextCategory>
+                <MessageCopied id={ `${index}-style` } showMessage={ false }>
+                  Link copiado!
+                </MessageCopied>
                 <TextName data-testid={ `${index}-horizontal-name` }>
                   { recipe.name }
-                  <ShareIcon>
+                  <ShareIcon
+                    onClick={ () => {
+                      copy(`${window.location.origin}/comidas/${recipe.id}`);
+                      document.getElementById(`${index}-style`).style.display = 'block';
+                    } }
+                  >
                     <Image
                       data-testid={ `${index}-horizontal-share-btn` }
                       src={ ShareImage }
@@ -139,6 +148,13 @@ const ContentRecipe = styled.div`
 
 const TextCategory = styled.div`
   width: 80%;
+`;
+
+const MessageCopied = styled.p`
+  width: 80%;
+  margin: 0;
+  color: green;
+  display: ${(props) => (props.showMessage ? 'block' : 'none')}
 `;
 
 const TextName = styled.div`
