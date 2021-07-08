@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
@@ -81,7 +82,12 @@ function FinishedRecipies() {
           list.map((recipe, index) => (
             <CardRecipe key={ index }>
               <ImageRecipe>
-                <Image data-testid={ `${index}-horizontal-image` } src={ recipe.image } />
+                <Link to={ `/${recipe.type}s/${recipe.id}` }>
+                  <Image
+                    data-testid={ `${index}-horizontal-image` }
+                    src={ recipe.image }
+                  />
+                </Link>
               </ImageRecipe>
               <ContentRecipe>
                 <TextCategory data-testid={ `${index}-horizontal-top-text` }>
@@ -94,8 +100,13 @@ function FinishedRecipies() {
                 <MessageCopied id={ `${index}-style` } showMessage={ false }>
                   Link copiado!
                 </MessageCopied>
-                <TextName data-testid={ `${index}-horizontal-name` }>
-                  { recipe.name }
+                <Link to={ `/${recipe.type}s/${recipe.id}` }>
+                  <TextName data-testid={ `${index}-horizontal-name` }>
+                    { recipe.name }
+                  </TextName>
+                </Link>
+                <TextDate data-testid={ `${index}-horizontal-done-date` }>
+                  { recipe.doneDate }
                   <ShareIcon
                     onClick={ () => {
                       copy(`${window.location.origin}/comidas/${recipe.id}`);
@@ -107,9 +118,6 @@ function FinishedRecipies() {
                       src={ ShareImage }
                     />
                   </ShareIcon>
-                </TextName>
-                <TextDate data-testid={ `${index}-horizontal-done-date` }>
-                  { recipe.doneDate }
                 </TextDate>
                 <Tags>
                   <ul>
