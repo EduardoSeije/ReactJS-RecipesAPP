@@ -42,17 +42,20 @@ function FinishedRecipies() {
         {
           doneRecipes.map((recipe, index) => (
             <CardRecipe key={ index }>
-              <ImageRecipe data-testid={ `${index}-horizontal-image` }>
-                <Image src={ recipe.image } />
+              <ImageRecipe>
+                <Image data-testid={ `${index}-horizontal-image` } src={ recipe.image } />
               </ImageRecipe>
               <ContentRecipe>
                 <TextCategory data-testid={ `${index}-horizontal-top-text` }>
-                  { recipe.category }
+                  { `${recipe.area} - ${recipe.category}` }
                 </TextCategory>
                 <TextName data-testid={ `${index}-horizontal-name` }>
                   { recipe.name }
-                  <ShareIcon data-testid={ `${index}-horizontal-share-btn` }>
-                    <Image src={ ShareImage } />
+                  <ShareIcon>
+                    <Image
+                      data-testid={ `${index}-horizontal-share-btn` }
+                      src={ ShareImage }
+                    />
                   </ShareIcon>
                 </TextName>
                 <TextDate data-testid={ `${index}-horizontal-done-date` }>
@@ -143,6 +146,8 @@ const TextDate = styled.div`
 `;
 
 const ShareIcon = styled.button`
+  width: 26px;
+  height: 26px;
   background: none;
   color: inherit;
   border: none;
@@ -150,12 +155,13 @@ const ShareIcon = styled.button`
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  margin-left: 10px;
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 const Tags = styled.div`
