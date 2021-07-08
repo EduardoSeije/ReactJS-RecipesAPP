@@ -8,10 +8,10 @@ import { requestDrinkFirstLetter,
   requestDrinkIngredient, requestDrinkName } from '../service/apiRequestsDrinks';
 
 function SearchBar() {
-  const { ingredient, setIngredient, mealsToMap, setMealsToMap,
+  const { ingredient, setIngredient, setMealsToMap,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
   const { setDrinksSearch, drinks,
-    setDrinksToMap, drinksToMap } = useContext(DrinksContext);
+    setDrinksToMap } = useContext(DrinksContext);
 
   const handleText = ({ target }) => {
     setIngredient(target.value);
