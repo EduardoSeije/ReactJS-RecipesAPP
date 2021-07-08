@@ -43,11 +43,6 @@ function FavoriteRecepies() {
     setArrayRecipes(doneRecipes);
   }
 
-  // function toggleValueButtons() {
-  //   if(value === 'Foods')
-  // }
-  // image, name, category, id, area, alcoholicOrNot, index
-
   useEffect(() => {
     getArrayStorage();
   }, [value]);
