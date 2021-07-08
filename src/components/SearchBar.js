@@ -63,11 +63,11 @@ function SearchBar() {
     }
   }, [ingredient]);
 
-  console.log(meals);
-  console.log(drinks);
-  console.log(radio);
-  console.log(mealsToMap);
-  console.log(drinksToMap);
+  // console.log(meals);
+  // console.log(drinks);
+  // console.log(radio);
+  // console.log(mealsToMap);
+  // console.log(drinksToMap);
   const history = useHistory();
   function handleClick() {
     if (path === '/comidas' && meals === null) {
