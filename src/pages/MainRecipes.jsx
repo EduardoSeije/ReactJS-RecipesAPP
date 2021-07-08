@@ -1,17 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import FoodContext from '../contexts/foods/FoodContext';
-import DrinksContext from '../contexts/drinks/DrinksContext';
 import ButtonFilters from '../components/ButtonFilters';
 import Header from '../components/Header';
 import Cards from '../components/Cards';
 import LowerMenu from '../components/LowerMenu';
 import '../components/card.css';
 
-export default function MainRecipes({ categories,
+export default function MainRecipes({ categories, arrayCards,
   functionChangeFilter, elementFilter, setToggle, toggle }) {
-  const { mealsToMap } = useContext(FoodContext);
-  const { drinksToMap } = useContext(DrinksContext);
   const twelve = 12;
 
   return (
@@ -25,7 +21,16 @@ export default function MainRecipes({ categories,
         functionChangeFilter={ functionChangeFilter }
       />
       <div className="mapped-cards">
-        {mealsToMap !== null && mealsToMap.length > 0 ? mealsToMap
+        {arrayCards.filter((_obj, index) => index < twelve).map((recipe, index) => (
+          <Cards
+            id={ recipe.idDrink || recipe.idMeal }
+            key={ index }
+            index={ index }
+            name={ recipe.strMeal || recipe.strDrink }
+            thumbnail={ recipe.strMealThumb || recipe.strDrinkThumb }
+          />
+        ))}
+        {/* mealsToMap !== null && mealsToMap.length > 0 ? mealsToMap
           .slice(0, twelve).map((meal, index) => (
             <Cards
               key={ index }
@@ -33,8 +38,8 @@ export default function MainRecipes({ categories,
               name={ meal.strMeal }
               thumbnail={ meal.strMealThumb }
             />
-          )) : ''}
-        {drinksToMap !== null && drinksToMap.length > 0 ? drinksToMap
+          )) : ''} */}
+        {/* {drinksToMap !== null && drinksToMap.length > 0 ? drinksToMap
           .slice(0, twelve).map((drink, index) => (
             <Cards
               key={ index }
@@ -42,7 +47,7 @@ export default function MainRecipes({ categories,
               name={ drink.strDrink }
               thumbnail={ drink.strDrinkThumb }
             />
-          )) : ''}
+          )) : ''} */}
         <LowerMenu />
       </div>
     </div>
@@ -55,4 +60,5 @@ MainRecipes.propTypes = {
   elementFilter: PropTypes.string.isRequired,
   setToggle: PropTypes.func.isRequired,
   toggle: PropTypes.bool.isRequired,
+  arrayCards: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
