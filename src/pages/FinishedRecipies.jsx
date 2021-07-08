@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
@@ -31,17 +31,54 @@ const doneRecipes = [
 ];
 
 function FinishedRecipies() {
+  const [list, setList] = useState([]);
+  const [filter, setFilter] = useState('All');
+  useEffect(() => {
+    setList(doneRecipes);
+  }, []);
+
+  useEffect(() => {
+    switch (filter) {
+    case 'All':
+      setList(doneRecipes);
+      break;
+    case 'Food':
+      setList(doneRecipes.filter((recipe) => recipe.type === 'comida'));
+      break;
+    case 'Drinks':
+      setList(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
+      break;
+    default:
+      break;
+    }
+  }, [filter]);
+
   return (
     <div>
       <Header />
       <Container>
         <Filters>
-          <Button data-testid="filter-by-all-btn">All</Button>
-          <Button data-testid="filter-by-food-btn">Food</Button>
-          <Button data-testid="filter-by-drink-btn">Drinks</Button>
+          <Button
+            data-testid="filter-by-all-btn"
+            onClick={ () => setFilter('All') }
+          >
+            All
+          </Button>
+          <Button
+            data-testid="filter-by-food-btn"
+            onClick={ () => setFilter('Food') }
+          >
+            Food
+          </Button>
+          <Button
+            data-testid="filter-by-drink-btn"
+            onClick={ () => setFilter('Drinks') }
+          >
+            Drinks
+          </Button>
         </Filters>
         {
-          doneRecipes.map((recipe, index) => (
+          list.map((recipe, index) => (
             <CardRecipe key={ index }>
               <ImageRecipe>
                 <Image data-testid={ `${index}-horizontal-image` } src={ recipe.image } />
