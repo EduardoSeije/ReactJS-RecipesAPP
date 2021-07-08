@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CardFavorite from '../components/CardFavorite';
 import Header from '../components/Header';
@@ -74,7 +75,7 @@ function FavoriteRecepies() {
         </Button>
       </Filters>
       {arrayRecipes.map((recipe, index) => (
-        <div key={ index }>
+        <Link to={ `${recipe.type}s/${recipe.id}` } key={ index }>
           <CardFavorite
             index={ index }
             image={ recipe.image }
@@ -85,7 +86,7 @@ function FavoriteRecepies() {
             alcoholicOrNot={ recipe.alcoholicOrNot }
             type={ recipe.type }
           />
-        </div>))}
+        </Link>))}
     </div>
   );
 }

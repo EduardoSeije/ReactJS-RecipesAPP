@@ -1,9 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { copy } from 'clipboard-copy';
+// import { useHistory, useLocation } from 'react-router';
+// import { copy } from 'fs-extra';
 import styled from 'styled-components';
 import ShareImage from '../images/shareIcon.svg';
 
 function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, type }) {
+  // const history = useHistory();
+  // const location = useLocation();
+
+  function shareUrl() {
+    // const url = location.pathname.push(`/${type}/${id}`);
+    // console.log(url);
+    // return navigator.clipboard.writeText(url);
+  }
+
   return (
     <CardRecipe id={ id }>
       <ImageRecipe>
@@ -15,7 +27,7 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
         </TextCategory>
         <TextName data-testid={ `${index}-horizontal-name` }>
           { name }
-          <ShareIcon>
+          <ShareIcon onClick={ shareUrl }>
             <Image
               data-testid={ `${index}-horizontal-share-btn` }
               src={ ShareImage }
