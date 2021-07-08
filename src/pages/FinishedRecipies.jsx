@@ -47,7 +47,11 @@ function FinishedRecipies() {
               </ImageRecipe>
               <ContentRecipe>
                 <TextCategory data-testid={ `${index}-horizontal-top-text` }>
-                  { `${recipe.area} - ${recipe.category}` }
+                  {
+                    recipe.type === 'comida'
+                      ? `${recipe.area} - ${recipe.category}`
+                      : `${recipe.alcoholicOrNot}`
+                  }
                 </TextCategory>
                 <TextName data-testid={ `${index}-horizontal-name` }>
                   { recipe.name }
