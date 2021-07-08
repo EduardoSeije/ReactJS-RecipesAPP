@@ -4,44 +4,19 @@ import styled from 'styled-components';
 import CardFavorite from '../components/CardFavorite';
 import Header from '../components/Header';
 
-const doneRecipes = [
-  {
-    id: '52771',
-    type: 'comida',
-    area: 'Italian',
-    category: 'Vegetarian',
-    alcoholicOrNot: '',
-    name: 'Spicy Arrabiata Penne',
-    image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-    doneDate: '23/06/2020',
-    tags: ['Pasta', 'Curry'],
-  },
-  {
-    id: '178319',
-    type: 'bebida',
-    area: '',
-    category: 'Cocktail',
-    alcoholicOrNot: 'Alcoholic',
-    name: 'Aquamarine',
-    image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-    doneDate: '23/06/2020',
-    tags: [],
-  },
-];
-
 function FavoriteRecepies() {
   const [arrayRecipes, setArrayRecipes] = useState([]);
   const [value, setValue] = useState('All');
 
   function getArrayStorage() {
-    // const arrStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const arrStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
     if (value === 'comida') {
-      return setArrayRecipes(doneRecipes.filter((recipe) => recipe.type === 'comida'));
+      return setArrayRecipes(arrStorage.filter((recipe) => recipe.type === 'comida'));
     }
     if (value === 'bebida') {
-      return setArrayRecipes(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
+      return setArrayRecipes(arrStorage.filter((recipe) => recipe.type === 'bebida'));
     }
-    setArrayRecipes(doneRecipes);
+    setArrayRecipes(arrStorage);
   }
 
   useEffect(() => {
