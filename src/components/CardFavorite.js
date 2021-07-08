@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 // import { copy } from 'clipboard-copy';
 // import { useHistory, useLocation } from 'react-router';
 // import { copy } from 'fs-extra';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ShareImage from '../images/shareIcon.svg';
+import FavoriteIconEnabled from '../images/blackHeartIcon.svg';
 
 function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, type }) {
   // const history = useHistory();
   // const location = useLocation();
+
+  function removeLocalStorage(event) {
+    const recipeId = event.target.parentNode.parentNode.parentNode.parentNode.id;
+    const arr = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const arrFilter = arr.filter((recipe) => recipe.id !== recipeId);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(arrFilter));
+  }
 
   function shareUrl() {
     // const url = location.pathname.push(`/${type}/${id}`);
@@ -19,7 +28,9 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
   return (
     <CardRecipe id={ id }>
       <ImageRecipe>
-        <Image data-testid={ `${index}-horizontal-image` } src={ image } alt={ name } />
+        <Link to={ `${type}s/${id}` }>
+          <Image data-testid={ `${index}-horizontal-image` } src={ image } alt={ name } />
+        </Link>
       </ImageRecipe>
       <ContentRecipe>
         <TextCategory data-testid={ `${index}-horizontal-top-text` }>
@@ -34,6 +45,20 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
             />
           </ShareIcon>
         </TextName>
+
+        <Container>
+          <button
+            type="button"
+            onClick={ removeLocalStorage }
+          >
+            <img
+              data-testid="favorite-btn"
+              src={ FavoriteIconEnabled }
+              alt="Compartilhar"
+            />
+          </button>
+        </Container>
+
         {/* <TextDate data-testid={ `${index}-horizontal-done-date` }>
           { recipe.doneDate }
         </TextDate> */}
@@ -62,6 +87,27 @@ CardFavorite.propTypes = {
 }.isRequired;
 
 export default CardFavorite;
+
+const Container = styled.div`
+width: 100%;
+max-height: 150px;
+display: flex;
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+`;
 
 const CardRecipe = styled.div`
   width: 90%;
@@ -116,3 +162,53 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+
+// import React, { useState, useEffect, useContext } from 'react';
+// import PropTypes from 'prop-types';
+
+// import styled from 'styled-components';
+
+// import AppContext from '../../contexts/app/AppContext';
+
+// const getFavoriteRecipes = () => {
+//   const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
+//   return dataLS || false;
+// };
+
+// const checkIsFavorite = (item, screenActive, setIsFavorite) => {
+//   const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
+//   if (item[0] && dataLS) {
+//     if (screenActive === 'food') {
+//       const check = !!dataLS.filter((recipe) => recipe.id === item[0].idMeal).length;
+//       if (check) setIsFavorite(true);
+//     } else {
+//       const check = !!dataLS.filter((recipe) => recipe.id === item[0].idDrink).length;
+//       if (check) setIsFavorite(true);
+//     }
+//   } else {
+//     setIsFavorite(false);
+//   }
+// };
+
+// export default function FavoriteButton(props) {
+//   const { item } = props;
+
+//   const [isFavorite, setIsFavorite] = useState(false);
+//   const { screenActive } = useContext(AppContext);
+
+//   useEffect(() => {
+//     checkIsFavorite(item, screenActive, setIsFavorite);
+//   }, [item]);
+
+//   return (
+
+//   );
+// }
+
+// FavoriteButton.propTypes = {
+//   item: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+// };
+
+// FavoriteButton.defaultProps = {
+//   item: {},
+// };
