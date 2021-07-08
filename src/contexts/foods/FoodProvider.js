@@ -14,6 +14,7 @@ function FoodProvider({ children }) {
   const [mealsRecipes, setMeals] = useState([]);
   const [mealsToMap, setMealsToMap] = useState([]);
   const [toggleFoods, setToggleFoods] = useState(false);
+  const [meals2, setMeals2] = useState([]);
 
   const value = {
     searchBar,
@@ -32,12 +33,14 @@ function FoodProvider({ children }) {
     setMealsToMap,
     toggleFoods,
     setToggleFoods,
+    meals2,
   };
 
   async function fetchApiMeals() {
     const icon = filtersFoods ? 'c' : 's';
     const seach = filtersFoods ? 'filter' : 'search';
     setMeals(await resultApiMeals(seach, icon, filtersFoods));
+    setMeals2(await resultApiMeals(seach, icon, filtersFoods));
     setCategories(await resultApiMeals('list', 'c', 'list'));
   }
 
