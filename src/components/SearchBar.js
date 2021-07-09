@@ -65,7 +65,8 @@ function SearchBar() {
 
   // console.log(meals);
   // console.log(drinks);
-  // console.log(radio);
+  console.log(radio.length);
+  console.log(radio);
   // console.log(mealsToMap);
   // console.log(drinksToMap);
   const history = useHistory();
