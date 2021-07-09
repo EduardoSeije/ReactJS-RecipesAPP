@@ -15,6 +15,7 @@ import ExploreFood from './pages/ExploreFood';
 import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreFoodArea from './pages/ExploreFoodArea';
 import ExploreIngredients from './pages/ExploreIingredients';
+import NotFound from './pages/NotFound';
 
 function App() {
   const { categoriesDrinks, drinksRecipes,
@@ -68,6 +69,7 @@ function App() {
         <Route path="/receitas-favoritas" component={ FavoriteRecepies } />
         <Route path="/comidas/:id" component={ DetailsRecipe } />
         <Route path="/bebidas/:id" component={ DetailsRecipe } />
+        <Route component={ NotFound } />
       </Switch>
     </div>
   );
