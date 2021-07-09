@@ -9,25 +9,61 @@ import FoodContext from '../contexts/foods/FoodContext';
 function ExploreFoodArea() {
   const maxElements = 12;
 
-  const [areas, setareas] = useState([]);
+  const [areas, setAreas] = useState([]);
+  const [selectedArea, setSelectedArea] = useState('');
+  const [list, setList] = useState([]);
 
   const { mealsRecipes } = useContext(FoodContext);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { target: { value } } = e;
+    setSelectedArea(value);
+  };
+
+  useEffect(() => {
+    if (!selectedArea) {
+      setList(mealsRecipes);
+    } else {
+      const getRecipesByArea = async () => {
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${selectedArea}`);
+        const { meals } = await res.json();
+        const newList = [];
+        meals.forEach(async (meal) => {
+          const elRes = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal.idMeal}`);
+          const data = await elRes.json();
+          newList.push(data.meals[0]);
+        });
+        setList(newList);
+      };
+      getRecipesByArea();
+    }
+  }, [selectedArea, mealsRecipes]);
+
+  useEffect(() => {
+    setList(mealsRecipes);
+  }, [mealsRecipes]);
 
   useEffect(() => {
     const getAreas = async () => {
       const res = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
       const data = await res.json();
-      setareas(data.meals);
+      setAreas(data.meals);
     };
     getAreas();
-  }, []);
+    setList(mealsRecipes);
+  }, [mealsRecipes]);
 
   return (
     <Container>
       <Header />
       <Content>
-        <SelectArea data-testid="explore-by-area-dropdown">
-          <option value="">Selecione uma opção</option>
+        <SelectArea
+          data-testid="explore-by-area-dropdown"
+          value={ selectedArea }
+          onChange={ handleChange }
+        >
+          <option defaultValue>Selecione uma opção</option>
           {
             areas.length && areas.map(({ strArea }, i) => (
               <option
@@ -42,7 +78,7 @@ function ExploreFoodArea() {
         </SelectArea>
         <ContainerCards>
           {
-            mealsRecipes.filter((_, index) => index < maxElements)
+            list.filter((_, index) => index < maxElements)
               .map((recipe, index) => (
                 <Cards
                   id={ recipe.idMeal }
