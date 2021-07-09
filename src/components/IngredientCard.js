@@ -7,7 +7,6 @@ function IngredientCard({ index, thumbnail, name }) {
 
   return (
     <div className="">
-      {/* <Link to={ `${pathname}/${id}` }> */}
       <div
         className="cards-div"
         data-testid={ `${index}-ingredient-card` }
@@ -25,7 +24,6 @@ function IngredientCard({ index, thumbnail, name }) {
           { name }
         </h2>
       </div>
-      {/* </Link> */}
     </div>
   );
 }
