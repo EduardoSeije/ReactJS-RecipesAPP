@@ -1,30 +1,64 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import copy from 'clipboard-copy';
-import ShareButtonIcon from './ShareButtonIcon.png';
+import ShareIcon from '../../images/shareIcon.svg';
 
-function ShareButton() {
-  const copyUrlToCLipBoard = () => {
-    copy(window.location.href);
+export default function ShareButton(props) {
+  const showMessageClipboard = () => {
+    document.querySelector('.message-clipboard').style.display = 'block';
   };
-
+  const { item } = props;
   return (
-    <span>
-      <button
-        type="button"
-        onClick={ () => copyUrlToCLipBoard() }
-      >
-        <img
-          data-testid="share-btn"
-          width="50px"
-          src={ ShareButtonIcon }
-          alt="Compartilhar"
-        />
-      </button>
-    </span>
+    <Container>
+      {
+        item.length
+          && (
+            <button
+              type="button"
+              onClick={ () => {
+                copy(window.location.href);
+                showMessageClipboard();
+              } }
+            >
+              <img
+                data-testid="share-btn"
+                src={ ShareIcon }
+                alt="Compartilhar"
+              />
+            </button>
+          )
+      }
+    </Container>
   );
 }
 
-export default ShareButton;
+ShareButton.propTypes = {
+  item: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
+
+ShareButton.defaultProps = {
+  item: {},
+};
+
+const Container = styled.div`
+  width: 100%;
+  max-height: 150px;
+  display: flex;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+`;

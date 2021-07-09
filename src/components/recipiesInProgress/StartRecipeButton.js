@@ -18,6 +18,14 @@ export default function StartRecipeButton(props) {
   const [textButton, setTextButton] = useState('Iniciar Receita');
   const [redirect, setRedirect] = useState(false);
 
+  // console.log(history.location.pathname.includes('in-progress'));
+
+  // const verifyLocationPage = () => {
+  //   if (history.location.pathname.includes('in-progress')) {
+  //     console.log('em pregresso');
+  //   };
+  // }
+
   const buttonIniciar = () => {
     setRedirect(true);
   };
@@ -27,26 +35,26 @@ export default function StartRecipeButton(props) {
     return null;
   };
 
-  useEffect(() => {
-    const dataLS = getInProgressRecipes();
-    if (item.length && dataLS) {
-      let check;
-      if (type === 'comidas') {
-        check = !!Object.keys(dataLS.meals).filter(
-          (key) => key === item[0].idMeal,
-        ).length;
-      } else {
-        check = !!Object.keys(dataLS.cocktails).filter(
-          (key) => key === item[0].idDrink,
-        ).length;
-      }
-      if (check) {
-        setTextButton('Continuar Receita');
-      }
-    }
-  }, [item]);
+  // useEffect(() => {
+  //   const dataLS = getInProgressRecipes();
+  //   if (item.length && dataLS) {
+  //     let check;
+  //     if (type === 'comidas') {
+  //       check = !!Object.keys(dataLS.meals).filter(
+  //         (key) => key === item[0].idMeal,
+  //       ).length;
+  //     } else {
+  //       check = !!Object.keys(dataLS.cocktails).filter(
+  //         (key) => key === item[0].idDrink,
+  //       ).length;
+  //     }
+  //     if (check) {
+  //       setTextButton('Continuar Receita');
+  //     }
+  //   }
+  // }, [item]);
 
-  console.log(history)
+ 
 
   return (
     <span>

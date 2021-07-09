@@ -1,21 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import HeaderPhoto from '../components/RecipiesInProgress/HeaderPhoto';
+import HeaderPhoto from '../components/DetailsRecipe/HeaderPhoto';
 import AppContext from '../contexts/app/AppContext';
-import TitleRecipe from '../components/RecipiesInProgress/TitleRecipe';
-import ShareButton from '../components/RecipiesInProgress/ShareButton';
-import FavoriteButton from '../components/RecipiesInProgress/FavoriteButton';
-import TextSubtitle from '../components/RecipiesInProgress/TextSubtitle';
-import Ingredients from '../components/RecipiesInProgress/Ingredients';
-import TextInstructions from '../components/RecipiesInProgress/TextInstructions';
-import VideoRecipe from '../components/RecipiesInProgress/VideRecipe';
-import RecommendedRecipes from '../components/RecipiesInProgress/RecommendedRecipes';
-import StartRecipeButton from '../components/RecipiesInProgress/StartRecipeButton';
+import TitleRecipe from '../components/DetailsRecipe/TitleRecipe';
+import ShareButton from '../components/DetailsRecipe/ShareButton';
+import FavoriteButton from '../components/DetailsRecipe/FavoriteButton';
+import TextSubtitle from '../components/DetailsRecipe/TextSubtitle';
+import Ingredients from '../components/DetailsRecipe/Ingredients';
+import TextInstructions from '../components/DetailsRecipe/TextInstructions';
+import VideoRecipe from '../components/DetailsRecipe/VideRecipe';
+import RecommendedRecipes from '../components/DetailsRecipe/RecommendedRecipes';
+import StartRecipeButton from '../components/DetailsRecipe/StartRecipeButton';
 
 import user from '../configs/configs';
 
-export default function RecpiesInProgress(props) {
+export default function DetailsRecipe(props) {
   const { screens: { drink, food } } = user;
   const url = window.location.href;
   const [isLoading, setIsLoading] = useState(false);
@@ -24,8 +24,6 @@ export default function RecpiesInProgress(props) {
   const { match: { params: { id } } } = props;
   const { screenActive, setScreenActive } = useContext(AppContext);
   const tags = screenActive === 'food' ? item.meals : item.drinks;
-
-  // console.log(props.location.pathname);
 
   useEffect(() => {
     const dataLS = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -80,7 +78,7 @@ export default function RecpiesInProgress(props) {
   );
 }
 
-RecpiesInProgress.propTypes = {
+DetailsRecipe.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
