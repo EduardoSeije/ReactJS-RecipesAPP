@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ShareImage from '../images/shareIcon.svg';
 import FavoriteIconEnabled from '../images/blackHeartIcon.svg';
+import AppProvider from '../contexts/app/AppContext';
 
 function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, type }) {
+  const { setRenderFavorites, renderFavorites } = useContext(AppProvider);
+
   function removeLocalStorage(event) {
     const recipeId = event.target.parentNode.parentNode.parentNode.parentNode.id;
     const arr = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const arrFilter = arr.filter((recipe) => recipe.id !== recipeId);
+    setRenderFavorites(!renderFavorites);
     localStorage.setItem('favoriteRecipes', JSON.stringify(arrFilter));
   }
 

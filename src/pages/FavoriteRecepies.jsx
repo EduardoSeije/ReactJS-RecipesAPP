@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import CardFavorite from '../components/CardFavorite';
 import Header from '../components/Header';
+import AppProvider from '../contexts/app/AppContext';
 
 function FavoriteRecepies() {
   const [arrayRecipes, setArrayRecipes] = useState([]);
   const [value, setValue] = useState('All');
-  // const [local,
-  // setLocal] = useState(JSON.stringify(localStorage.getItem('favoriteRecipes')));
-  // const local = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const { renderFavorites } = useContext(AppProvider);
 
   function getArrayStorage() {
     const arrStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -23,7 +22,7 @@ function FavoriteRecepies() {
 
   useEffect(() => {
     getArrayStorage();
-  }, [value]);
+  }, [value, renderFavorites]);
 
   return (
     <div>

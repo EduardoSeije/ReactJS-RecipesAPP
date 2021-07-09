@@ -4,10 +4,13 @@ import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [screenActive, setScreenActive] = useState('food');
+  const [renderFavorites, setRenderFavorites] = useState(true);
 
   const value = {
     screenActive,
     setScreenActive,
+    renderFavorites,
+    setRenderFavorites,
   };
   return (
     <AppContext.Provider value={ value }>
