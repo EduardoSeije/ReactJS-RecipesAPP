@@ -24,7 +24,6 @@ function App() {
   const { categoriesFoods, mealsRecipes, setFiltersFoods,
     filtersFoods, setToggleFoods, toggleFoods } = useContext(MealsProvider);
 
-    
   return (
     <div className="meals">
       <Switch>
