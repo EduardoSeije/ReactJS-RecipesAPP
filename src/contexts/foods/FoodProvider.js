@@ -5,28 +5,48 @@ import FoodContext from './FoodContext';
 
 function FoodProvider({ children }) {
   const [searchBar] = useState('');
+  const [ingredient, setIngredient] = useState('');
+  const [radio, setRadio] = useState('');
+  const [filters] = useState('');
+  const [meals, setMealsSearch] = useState([]);
   const [categoriesFoods, setCategories] = useState([]);
   const [filtersFoods, setFiltersFoods] = useState('');
   const [mealsRecipes, setMeals] = useState([]);
+  const [mealsToMap, setMealsToMap] = useState([]);
+  const [toggleFoods, setToggleFoods] = useState(false);
+  const [meals2, setMeals2] = useState([]);
+
+  const value = {
+    searchBar,
+    filters,
+    meals,
+    ingredient,
+    setIngredient,
+    radio,
+    setRadio,
+    filtersFoods,
+    categoriesFoods,
+    mealsRecipes,
+    setFiltersFoods,
+    setMealsSearch,
+    mealsToMap,
+    setMealsToMap,
+    toggleFoods,
+    setToggleFoods,
+    meals2,
+  };
 
   async function fetchApiMeals() {
     const icon = filtersFoods ? 'c' : 's';
     const seach = filtersFoods ? 'filter' : 'search';
     setMeals(await resultApiMeals(seach, icon, filtersFoods));
+    setMeals2(await resultApiMeals(seach, icon, filtersFoods));
     setCategories(await resultApiMeals('list', 'c', 'list'));
   }
 
   useEffect(() => {
     fetchApiMeals();
   }, [filtersFoods]);
-
-  const value = {
-    searchBar,
-    filtersFoods,
-    categoriesFoods,
-    mealsRecipes,
-    setFiltersFoods,
-  };
 
   return (
     <FoodContext.Provider value={ value }>
