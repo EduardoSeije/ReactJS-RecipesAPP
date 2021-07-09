@@ -10,13 +10,13 @@ function ExploreFoodArea() {
   const maxElements = 12;
 
   const [areas, setAreas] = useState([]);
-  const [selectedArea, setSelectedArea] = useState('');
+  const [selectedArea, setSelectedArea] = useState('All');
   const [list, setList] = useState([]);
 
   const { mealsRecipes } = useContext(FoodContext);
 
   useEffect(() => {
-    if (!selectedArea) {
+    if (selectedArea === 'All') {
       setList(mealsRecipes);
     } else {
       const getRecipesByArea = async () => {
@@ -36,7 +36,7 @@ function ExploreFoodArea() {
     const getAreas = async () => {
       const res = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
       const data = await res.json();
-      setAreas(data.meals);
+      setAreas([{ strArea: 'All' }, ...data.meals]);
     };
     getAreas();
   }, [mealsRecipes]);
@@ -49,14 +49,9 @@ function ExploreFoodArea() {
           data-testid="explore-by-area-dropdown"
           value={ selectedArea }
           onChange={ ({ target: { value } }) => {
-            if (value === 'Selecione uma opção') {
-              setSelectedArea('');
-            } else {
-              setSelectedArea(value);
-            }
+            setSelectedArea(value);
           } }
         >
-          <option defaultValue>Selecione uma opção</option>
           {
             areas.length && areas.map(({ strArea }, i) => (
               <option
