@@ -6,7 +6,9 @@ import Header from '../components/Header';
 function FavoriteRecepies() {
   const [arrayRecipes, setArrayRecipes] = useState([]);
   const [value, setValue] = useState('All');
-  const local = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  // const [local,
+  // setLocal] = useState(JSON.stringify(localStorage.getItem('favoriteRecipes')));
+  // const local = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
   function getArrayStorage() {
     const arrStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -21,7 +23,7 @@ function FavoriteRecepies() {
 
   useEffect(() => {
     getArrayStorage();
-  }, [value, local]);
+  }, [value]);
 
   return (
     <div>

@@ -1,17 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { copy } from 'clipboard-copy';
-// import { useHistory, useLocation } from 'react-router';
-// import { copy } from 'fs-extra';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ShareImage from '../images/shareIcon.svg';
 import FavoriteIconEnabled from '../images/blackHeartIcon.svg';
 
 function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, type }) {
-  // const history = useHistory();
-  // const location = useLocation();
-
   function removeLocalStorage(event) {
     const recipeId = event.target.parentNode.parentNode.parentNode.parentNode.id;
     const arr = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -20,9 +14,7 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
   }
 
   function shareUrl() {
-    // const url = location.pathname.push(`/${type}/${id}`);
-    // console.log(url);
-    // return navigator.clipboard.writeText(url);
+    return navigator.clipboard.writeText(`${window.location.host}/${type}s/${id}`);
   }
 
   return (
@@ -36,15 +28,18 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
         <TextCategory data-testid={ `${index}-horizontal-top-text` }>
           {type === 'comida' ? `${area} - ${category}` : `${alcoholicOrNot}`}
         </TextCategory>
-        <TextName data-testid={ `${index}-horizontal-name` }>
-          { name }
-          <ShareIcon onClick={ shareUrl }>
-            <Image
-              data-testid={ `${index}-horizontal-share-btn` }
-              src={ ShareImage }
-            />
-          </ShareIcon>
-        </TextName>
+        <Link to={ `${type}s/${id}` }>
+          <TextName data-testid={ `${index}-horizontal-name` }>
+            { name }
+          </TextName>
+        </Link>
+
+        <ShareIcon onClick={ shareUrl }>
+          <Image
+            data-testid={ `${index}-horizontal-share-btn` }
+            src={ ShareImage }
+          />
+        </ShareIcon>
 
         <Container>
           <button
@@ -162,53 +157,3 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
 `;
-
-// import React, { useState, useEffect, useContext } from 'react';
-// import PropTypes from 'prop-types';
-
-// import styled from 'styled-components';
-
-// import AppContext from '../../contexts/app/AppContext';
-
-// const getFavoriteRecipes = () => {
-//   const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
-//   return dataLS || false;
-// };
-
-// const checkIsFavorite = (item, screenActive, setIsFavorite) => {
-//   const dataLS = JSON.parse(localStorage.getItem('favoriteRecipes'));
-//   if (item[0] && dataLS) {
-//     if (screenActive === 'food') {
-//       const check = !!dataLS.filter((recipe) => recipe.id === item[0].idMeal).length;
-//       if (check) setIsFavorite(true);
-//     } else {
-//       const check = !!dataLS.filter((recipe) => recipe.id === item[0].idDrink).length;
-//       if (check) setIsFavorite(true);
-//     }
-//   } else {
-//     setIsFavorite(false);
-//   }
-// };
-
-// export default function FavoriteButton(props) {
-//   const { item } = props;
-
-//   const [isFavorite, setIsFavorite] = useState(false);
-//   const { screenActive } = useContext(AppContext);
-
-//   useEffect(() => {
-//     checkIsFavorite(item, screenActive, setIsFavorite);
-//   }, [item]);
-
-//   return (
-
-//   );
-// }
-
-// FavoriteButton.propTypes = {
-//   item: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-// };
-
-// FavoriteButton.defaultProps = {
-//   item: {},
-// };

@@ -4,12 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import './Header.css';
 
-function Cards({ index, thumbnail, name, id }) {
+function Cards({ index, thumbnail, name, id, type }) {
   const { pathname } = useLocation();
 
   return (
     <div className="">
-      <Link to={ `${pathname}/${id}` }>
+      <Link to={ type ? `/comidas/${id}` : `${pathname}/${id}` }>
         <div
           id={ id }
           className="cards-div"
