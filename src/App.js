@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DetailsRecipe from './pages/DetailsRecipe';
 import FinishedRecipies from './pages/FinishedRecipies';
 import FavoriteRecepies from './pages/FavoriteRecepies';
+import RecpiesInProgress from './pages/RecpiesInProgress';
 
 function App() {
   const { categoriesDrinks, drinksRecipes,
@@ -44,8 +45,8 @@ function App() {
               arrayCards={ mealsRecipes }
             />) }
         />
-        <Route path="/comidas/:id/in-progress" component={ MainRecipes } />
-        <Route path="/bebidas/:id/in-progress" component={ MainRecipes } />
+        <Route path="/comidas/:id/in-progress" component={ RecpiesInProgress } />
+        <Route path="/bebidas/:id/in-progress" component={ RecpiesInProgress } />
         <Route exact path="/explorar" component={ Explore } />
         <Route exact path="/explorar/comidas" component={ Explore } />
         <Route exact path="/explorar/bebidas" component={ Explore } />
