@@ -1,17 +1,16 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import HeaderPhoto from '../components/RecipiesInProgress/HeaderPhoto';
+import HeaderPhoto from '../components/recipiesInProgress/HeaderPhoto';
 import AppContext from '../contexts/app/AppContext';
-import TitleRecipe from '../components/RecipiesInProgress/TitleRecipe';
-import ShareButton from '../components/RecipiesInProgress/ShareButton';
-import FavoriteButton from '../components/RecipiesInProgress/FavoriteButton';
-import TextSubtitle from '../components/RecipiesInProgress/TextSubtitle';
-import Ingredients from '../components/RecipiesInProgress/Ingredients';
-import TextInstructions from '../components/RecipiesInProgress/TextInstructions';
-import VideoRecipe from '../components/RecipiesInProgress/VideRecipe';
-import RecommendedRecipes from '../components/RecipiesInProgress/RecommendedRecipes';
-import StartRecipeButton from '../components/RecipiesInProgress/StartRecipeButton';
+import TitleRecipe from '../components/recipiesInProgress/TitleRecipe';
+import ShareButton from '../components/recipiesInProgress/ShareButton';
+import FavoriteButton from '../components/recipiesInProgress/FavoriteButton';
+import TextSubtitle from '../components/recipiesInProgress/TextSubtitle';
+import Ingredients from '../components/recipiesInProgress/Ingredients';
+import TextInstructions from '../components/recipiesInProgress/TextInstructions';
+// import RecommendedRecipes from '../components/recipiesInProgress/RecommendedRecipes';
+import FinishRecipeButton from '../components/recipiesInProgress/FinishRecipeButton';
 
 import user from '../configs/configs';
 
@@ -68,13 +67,13 @@ export default function RecpiesInProgress(props) {
         <TextSubtitle item={ tags } />
         <Ingredients item={ tags } />
         <TextInstructions item={ tags } />
-        {
+        {/* {
           screenActive === 'food' && <VideoRecipe
             item={ tags }
           />
-        }
-        <RecommendedRecipes />
-        { !doneRecipe.length ? <StartRecipeButton item={ tags } /> : null }
+        } */}
+        {/* <RecommendedRecipes /> */}
+        { !doneRecipe.length ? <FinishRecipeButton item={ tags } /> : null }
       </Content>
     </Container>
   );
