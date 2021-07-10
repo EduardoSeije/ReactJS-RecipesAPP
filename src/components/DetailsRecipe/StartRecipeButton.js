@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 import AppContext from '../../contexts/app/AppContext';
 
 const getInProgressRecipes = () => {
@@ -10,9 +9,8 @@ const getInProgressRecipes = () => {
   return dataLS || false;
 };
 
-export default function StartRecipeButton(props) {
+function StartRecipeButton(props) {
   const { screenActive } = useContext(AppContext);
-  const history = useHistory();
   const { item } = props;
   const type = screenActive === 'food' ? 'comidas' : 'bebidas';
   const [textButton, setTextButton] = useState('Iniciar Receita');
@@ -23,7 +21,13 @@ export default function StartRecipeButton(props) {
   };
 
   const redirectFunc = () => {
-    if (redirect === true) { return (<Redirect to={`/${type}/${screenActive === 'food' ? item[0].idMeal : item[0].idDrink}/in-progress`} />); }
+    if (redirect === true) {
+      return (
+        <Redirect
+          to={ `/${type}/${screenActive === 'food' ? item[0].idMeal
+            : item[0].idDrink}/in-progress` }
+        />);
+    }
     return null;
   };
 
@@ -46,8 +50,6 @@ export default function StartRecipeButton(props) {
     }
   }, [item]);
 
-  console.log(history)
-
   return (
     <span>
       <Button
@@ -59,7 +61,7 @@ export default function StartRecipeButton(props) {
       </Button>
       {redirectFunc()}
     </span>
-  )
+  );
 }
 
 StartRecipeButton.propTypes = {
@@ -69,6 +71,8 @@ StartRecipeButton.propTypes = {
 StartRecipeButton.defaultProps = {
   item: {},
 };
+
+export default StartRecipeButton;
 
 const Button = styled.button`
   width: 80%;
