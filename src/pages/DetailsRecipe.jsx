@@ -73,6 +73,8 @@ export default function DetailsRecipe(props) {
         }
         <RecommendedRecipes />
         { !doneRecipe.length ? <StartRecipeButton item={ tags } /> : null }
+        {/* {console.log('DetailsRecipe:')}
+        {console.log(item)} */}
       </Content>
     </Container>
   );
