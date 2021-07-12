@@ -11,7 +11,7 @@ function SearchBar() {
   const { ingredient, setIngredient, setMealsToMap,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
   const { setDrinksSearch, drinks,
-    setDrinksToMap } = useContext(DrinksContext);
+    setDrinksToMap, drinksToMap } = useContext(DrinksContext);
 
   const handleText = ({ target }) => {
     setIngredient(target.value);
@@ -67,7 +67,7 @@ function SearchBar() {
   // console.log(drinks);
   // console.log(radio);
   // console.log(mealsToMap);
-  // console.log(drinksToMap);
+  console.log(drinksToMap);
   const history = useHistory();
   function handleClick() {
     if (path === '/comidas' && meals === null) {

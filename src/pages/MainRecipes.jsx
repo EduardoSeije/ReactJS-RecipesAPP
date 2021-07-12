@@ -37,6 +37,7 @@ export default function MainRecipes({ categories, arrayCards,
           .slice(0, twelve).map((meal, index) => (
             <Cards
               key={ index }
+              id={ meal.idMeal }
               index={ index }
               name={ meal.strMeal }
               thumbnail={ meal.strMealThumb }
@@ -46,6 +47,7 @@ export default function MainRecipes({ categories, arrayCards,
           .slice(0, twelve).map((drink, index) => (
             <Cards
               key={ index }
+              id={ drink.idDrink }
               index={ index }
               name={ drink.strDrink }
               thumbnail={ drink.strDrinkThumb }
