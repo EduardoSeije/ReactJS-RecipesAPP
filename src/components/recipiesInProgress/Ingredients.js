@@ -85,9 +85,9 @@ export default function Ingredients(props) {
 
   const ingredientsCheckBox = () => {
     const checkList = stepsIngredientsFitler().map((ele, index) => (
-      <div key={ index }>
+      <div key={ index } data-testid={ `${index}-ingredient-step` }>
         <label
-          htmlFor={ `${index}-ingredient-step` }
+          htmlFor={ `ingredient-step-${index}` }
           className="stepNotDoneYet"
           style={ ingredientsInProgress.includes(ele.recipe)
             ? { textDecoration: 'line-through' } : null }
@@ -98,9 +98,9 @@ export default function Ingredients(props) {
               changeClassesWhenIngredientClicked(event);
             } }
             value={ ele.recipe }
-            id={ `${index}-ingredient-step` }
+            id={ `ingredient-step-${index}` }
             type="checkbox"
-            data-testid={ `${index}-ingredient-step` }
+            // data-testid={ `${index}-ingredient-step` }
             checked={ ingredientsInProgress.includes(ele.recipe) }
           />
           { ele.recipe }

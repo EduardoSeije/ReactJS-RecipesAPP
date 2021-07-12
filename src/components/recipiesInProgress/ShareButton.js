@@ -18,7 +18,7 @@ export default function ShareButton(props) {
             <button
               type="button"
               onClick={ () => {
-                copy(window.location.href);
+                copy((window.location.href.replace(/\/in-progress/, '')));
                 showMessageClipboard();
               } }
             >
