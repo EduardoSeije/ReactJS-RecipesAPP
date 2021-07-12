@@ -25,6 +25,8 @@ const addToFavorites = (el, activeScreen) => {
       alcoholicOrNot: el.strAlcoholic || '',
       category: el.strCategory,
       area: el.strArea || '',
+      doneDate: new Date(),
+      tags: el.strTags.split(',') || [],
     };
   } else {
     newEl = {
@@ -35,6 +37,8 @@ const addToFavorites = (el, activeScreen) => {
       alcoholicOrNot: el.strAlcoholic || '',
       category: el.strCategory,
       area: el.strArea || '',
+      doneDate: new Date(),
+      tags: el.strTags.split(',') || [],
     };
   }
 
