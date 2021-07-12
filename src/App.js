@@ -11,11 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DetailsRecipe from './pages/DetailsRecipe';
 import FinishedRecipies from './pages/FinishedRecipies';
 import FavoriteRecepies from './pages/FavoriteRecepies';
+import RecpiesInProgress from './pages/RecpiesInProgress';
 import ExploreFood from './pages/ExploreFood';
 import ExploreDrinks from './pages/ExploreDrinks';
-import ExploreFoodIngred from './pages/ExploreFoodIngred';
-import ExploreDrinkIngred from './pages/ExploreDrinkIngred';
 import ExploreFoodArea from './pages/ExploreFoodArea';
+import ExploreIngredients from './pages/ExploreIingredients';
 import NotFound from './pages/NotFound';
 
 function App() {
@@ -58,13 +58,13 @@ function App() {
               arrayCards={ mealsRecipes }
             />) }
         />
-        <Route path="/comidas/:id/in-progress" component={ MainRecipes } />
-        <Route path="/bebidas/:id/in-progress" component={ MainRecipes } />
+        <Route path="/comidas/:id/in-progress" component={ RecpiesInProgress } />
+        <Route path="/bebidas/:id/in-progress" component={ RecpiesInProgress } />
         <Route exact path="/explorar" component={ Explore } />
         <Route exact path="/explorar/comidas" component={ ExploreFood } />
         <Route exact path="/explorar/bebidas" component={ ExploreDrinks } />
-        <Route path="/explorar/comidas/ingredientes" component={ ExploreFoodIngred } />
-        <Route path="/explorar/bebidas/ingredientes" component={ ExploreDrinkIngred } />
+        <Route path="/explorar/comidas/ingredientes" component={ ExploreIngredients } />
+        <Route path="/explorar/bebidas/ingredientes" component={ ExploreIngredients } />
         <Route path="/explorar/comidas/area" component={ ExploreFoodArea } />
         <Route path="/receitas-feitas" component={ FinishedRecipies } />
         <Route path="/receitas-favoritas" component={ FavoriteRecepies } />
