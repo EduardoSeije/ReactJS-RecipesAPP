@@ -6,7 +6,8 @@ import ShareImage from '../images/shareIcon.svg';
 import FavoriteIconEnabled from '../images/blackHeartIcon.svg';
 import AppProvider from '../contexts/app/AppContext';
 
-function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, type }) {
+function CardFavorite({ image, name, category, id, area,
+  alcoholicOrNot, index, type, doneDate, tags }) {
   const { setRenderFavorites, renderFavorites } = useContext(AppProvider);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -20,8 +21,13 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
 
   function shareUrl() {
     navigator
-      .clipboard.writeText(`${window.location.hostname}
-      :${window.location.port}/${type}s/${id}`);
+      .clipboard
+      .writeText(`${window.location.protocol}//${window.location.host}/${type}s/${id}`);
+    console.log(window.location.hostname);
+    console.log(window.location.protocol);
+    console.log(window.location.host);
+    console.log(`${window.location.hostname}:${window.location.port}/${type}s/${id}`);
+    console.log(`${window.location.host}/${type}s/${id}`);
     setShowMessage(!showMessage);
   }
 
@@ -54,30 +60,31 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
           <button
             type="button"
             onClick={ removeLocalStorage }
+            data-testid={ `${index}-horizontal-favorite-btn` }
+            src={ FavoriteIconEnabled }
           >
             <img
-              data-testid="favorite-btn"
               src={ FavoriteIconEnabled }
               alt="Compartilhar"
             />
           </button>
         </Container>
 
-        {/* <TextDate data-testid={ `${index}-horizontal-done-date` }>
-          { recipe.doneDate }
-        </TextDate> */}
-        {/* <Tags>
+        <TextDate data-testid={ `${index}-horizontal-done-date` }>
+          { doneDate }
+        </TextDate>
+        <Tags>
           <ul>
-            {recipe.tags.map((tagName, i) => (
+            {tags ? tags.map((tagName, i) => (
               <TextTag
                 key={ i }
-                data-testid={ `${index}-${tagName}-horizontal-tag` }
+                data-testid={ `${i}-${tagName}-horizontal-tag` }
               >
                 { tagName }
               </TextTag>
-            ))}
+            )) : ''}
           </ul>
-        </Tags> */}
+        </Tags>
       </ContentRecipe>
     </CardRecipe>
   );
@@ -170,4 +177,21 @@ const Image = styled.img`
 const MessageClipboard = styled.span`
   color: green;
   width: 100%;
+`;
+
+const TextDate = styled.div`
+  width: 80%;
+`;
+
+const Tags = styled.div`
+  width: 80%;
+`;
+
+const TextTag = styled.li`
+  color: red;
+  display: inline;
+
+  +li{
+    margin-left: 5px;
+  }
 `;

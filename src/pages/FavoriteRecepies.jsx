@@ -50,7 +50,7 @@ function FavoriteRecepies() {
           Drinks
         </Button>
       </Filters>
-      {arrayRecipes.map((recipe, index) => (
+      {arrayRecipes ? arrayRecipes.map((recipe, index) => (
         <div key={ index }>
           <CardFavorite
             index={ index }
@@ -61,8 +61,10 @@ function FavoriteRecepies() {
             area={ recipe.area }
             alcoholicOrNot={ recipe.alcoholicOrNot }
             type={ recipe.type }
+            tags={ recipe.tags }
+            doneDate={ recipe.doneDate }
           />
-        </div>))}
+        </div>)) : ''}
     </div>
   );
 }
