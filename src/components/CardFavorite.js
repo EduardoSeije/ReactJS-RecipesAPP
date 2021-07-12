@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,6 +8,7 @@ import AppProvider from '../contexts/app/AppContext';
 
 function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, type }) {
   const { setRenderFavorites, renderFavorites } = useContext(AppProvider);
+  const [showMessage, setShowMessage] = useState(false);
 
   function removeLocalStorage(event) {
     const recipeId = event.target.parentNode.parentNode.parentNode.parentNode.id;
@@ -18,7 +19,10 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
   }
 
   function shareUrl() {
-    return navigator.clipboard.writeText(`${window.location.host}/${type}s/${id}`);
+    navigator
+      .clipboard.writeText(`${window.location.hostname}
+      :${window.location.port}/${type}s/${id}`);
+    setShowMessage(!showMessage);
   }
 
   return (
@@ -44,6 +48,7 @@ function CardFavorite({ image, name, category, id, area, alcoholicOrNot, index, 
             src={ ShareImage }
           />
         </ShareIcon>
+        { showMessage ? <MessageClipboard>Link copiado!</MessageClipboard> : ''}
 
         <Container>
           <button
@@ -160,4 +165,9 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+const MessageClipboard = styled.span`
+  color: green;
+  width: 100%;
 `;
