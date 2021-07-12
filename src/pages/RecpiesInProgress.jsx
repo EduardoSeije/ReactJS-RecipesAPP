@@ -15,12 +15,13 @@ import FinishRecipeButton from '../components/recipiesInProgress/FinishRecipeBut
 import user from '../configs/configs';
 
 export default function RecpiesInProgress(props) {
+  const { match: { params: { id } } } = props;
   const { screens: { drink, food } } = user;
   const url = window.location.href;
   const [isLoading, setIsLoading] = useState(false);
-  const [item, setItem] = useState({});
   const [doneRecipe, setDoneRecipe] = useState([]);
-  const { match: { params: { id } } } = props;
+  const [item, setItem] = useState({});
+
   const { screenActive, setScreenActive } = useContext(AppContext);
   const tags = screenActive === 'food' ? item.meals : item.drinks;
 
@@ -74,6 +75,8 @@ export default function RecpiesInProgress(props) {
         } */}
         {/* <RecommendedRecipes /> */}
         { !doneRecipe.length ? <FinishRecipeButton item={ tags } /> : null }
+        {console.log('RecpiesInProgress:')}
+        {console.log(tags)}
       </Content>
     </Container>
   );

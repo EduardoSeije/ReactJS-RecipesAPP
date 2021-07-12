@@ -22,10 +22,13 @@ export default function StartRecipeButton(props) {
     if (item.length && dataLS) {
       let check;
       if (type === 'comidas') {
+        // console.log(dataLS);
         check = !!Object.keys(dataLS.meals).filter(
           (key) => key === item[0].idMeal,
         ).length;
       } else {
+        // console.log(dataLS);
+        // console.log(item);
         check = !!Object.keys(dataLS.cocktails).filter(
           (key) => key === item[0].idDrink,
         ).length;
