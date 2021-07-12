@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import LowerMenu from '../components/LowerMenu';
 
 const Perfil = () => {
-  const userEmail = JSON.parse(window.localStorage.getItem('user'));
-  // console.log(Object.values(userEmail));
+  const [user, setUser] = useState('Faça login...');
+  const userEmail = () => {
+    if ((window.localStorage).length > 0) {
+      setUser(JSON.parse(window.localStorage.getItem('user')));
+    }
+  };
+
+  useEffect(() => {
+    userEmail();
+  }, []);
+
   const history = useHistory();
   const logout = () => {
     window.localStorage.clear();
@@ -14,7 +23,9 @@ const Perfil = () => {
   return (
     <div>
       <Header title="Perfil" />
-      <h2 data-testid="profile-email">{ Object.values(userEmail) }</h2>
+      <h2 data-testid="profile-email">
+        { Object.values(user) }
+      </h2>
       <Link to="/receitas-feitas">
         <button data-testid="profile-done-btn" type="button">Receitas Feitas</button>
       </Link>

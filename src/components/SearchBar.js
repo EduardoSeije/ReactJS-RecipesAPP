@@ -8,7 +8,7 @@ import { requestDrinkFirstLetter,
   requestDrinkIngredient, requestDrinkName } from '../service/apiRequestsDrinks';
 
 function SearchBar() {
-  const { ingredient, setIngredient, mealsToMap, setMealsToMap,
+  const { ingredient, setIngredient, setMealsToMap,
     radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
   const { setDrinksSearch, drinks,
     setDrinksToMap, drinksToMap } = useContext(DrinksContext);
@@ -63,10 +63,10 @@ function SearchBar() {
     }
   }, [ingredient]);
 
-  console.log(meals);
-  console.log(drinks);
-  console.log(radio);
-  console.log(mealsToMap);
+  // console.log(meals);
+  // console.log(drinks);
+  // console.log(radio);
+  // console.log(mealsToMap);
   console.log(drinksToMap);
   const history = useHistory();
   function handleClick() {

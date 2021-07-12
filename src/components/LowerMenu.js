@@ -22,6 +22,7 @@ export default function LowerMenu() {
               setScreenActive(app.screens.drink);
               history.push('/bebidas');
             } }
+            src={ drinkIcon }
           >
             <img src={ drinkIcon } alt="Drink icon" />
           </button>
@@ -33,6 +34,7 @@ export default function LowerMenu() {
             onClick={ () => {
               history.push('/explorar');
             } }
+            src={ exploreIcon }
           >
             <img src={ exploreIcon } alt="Explore icon" />
           </button>
@@ -45,6 +47,7 @@ export default function LowerMenu() {
               setScreenActive(app.screens.food);
               history.push('/comidas');
             } }
+            src={ mealIcon }
           >
             <img src={ mealIcon } alt="Meal icon" />
           </button>
