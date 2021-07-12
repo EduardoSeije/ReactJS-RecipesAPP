@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import LowerMenu from '../components/LowerMenu';
 
 function ExploreDrinks() {
   const [randomDrink, setRandomDrink] = useState([]);
@@ -36,6 +37,7 @@ function ExploreDrinks() {
           </button>
         </Link>
       </div>
+      <LowerMenu />
     </>
   );
 }
