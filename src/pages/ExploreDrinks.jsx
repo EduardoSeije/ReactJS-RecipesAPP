@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import LowerMenu from '../components/LowerMenu';
 
 function ExploreDrinks() {
   const [randomDrink, setRandomDrink] = useState([]);
@@ -15,24 +17,28 @@ function ExploreDrinks() {
   }, []);
 
   return (
-    <div>
-      <Link to="/explorar/bebidas/ingredientes">
-        <button
-          data-testid="explore-by-ingredient"
-          type="button"
-        >
-          Por Ingredientes
-        </button>
-      </Link>
-      <Link to={ `/bebidas/${randomDrink}` }>
-        <button
-          data-testid="explore-surprise"
-          type="button"
-        >
-          Me Surpreenda!
-        </button>
-      </Link>
-    </div>
+    <>
+      <Header />
+      <div>
+        <Link to="/explorar/bebidas/ingredientes">
+          <button
+            data-testid="explore-by-ingredient"
+            type="button"
+          >
+            Por Ingredientes
+          </button>
+        </Link>
+        <Link to={ `/bebidas/${randomDrink}` }>
+          <button
+            data-testid="explore-surprise"
+            type="button"
+          >
+            Me Surpreenda!
+          </button>
+        </Link>
+      </div>
+      <LowerMenu />
+    </>
   );
 }
 
