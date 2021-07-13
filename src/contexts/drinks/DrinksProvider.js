@@ -39,6 +39,7 @@ function DrinksProvider({ children }) {
     setToggleDrinks,
     pageTitle,
     setPageTitle,
+    setDrinks,
   };
   return (
     <DrinksContext.Provider value={ value }>

@@ -16,6 +16,7 @@ function IngredientCard({ index, thumbnail, name }) {
           src={ thumbnail }
           alt={ `${index} recipe` }
           className="card-img"
+          id={ name }
         />
         <h2
           data-testid={ `${index}-card-name` }

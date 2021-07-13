@@ -9,9 +9,9 @@ import { requestDrinkFirstLetter,
 
 function SearchBar() {
   const { ingredient, setIngredient, setMealsToMap,
-    radio, setRadio, meals, setMealsSearch } = useContext(FoodContext);
+    radio, setRadio, meals, setMealsSearch, mealsRecipes } = useContext(FoodContext);
   const { setDrinksSearch, drinks,
-    setDrinksToMap, drinksToMap } = useContext(DrinksContext);
+    setDrinksToMap } = useContext(DrinksContext);
 
   const handleText = ({ target }) => {
     setIngredient(target.value);
@@ -67,7 +67,7 @@ function SearchBar() {
   // console.log(drinks);
   // console.log(radio);
   // console.log(mealsToMap);
-  console.log(drinksToMap);
+  console.log(mealsRecipes);
   const history = useHistory();
   function handleClick() {
     if (path === '/comidas' && meals === null) {
