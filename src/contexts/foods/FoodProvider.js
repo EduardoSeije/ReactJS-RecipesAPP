@@ -32,6 +32,7 @@ function FoodProvider({ children }) {
     setMealsToMap,
     toggleFoods,
     setToggleFoods,
+    setMeals,
   };
 
   async function fetchApiMeals() {

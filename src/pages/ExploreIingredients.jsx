@@ -12,8 +12,8 @@ import { requestDrinkIngredient } from '../service/apiRequestsDrinks';
 function ExploreIngredients() {
   const [foodIngred, setFoodIngred] = useState([]);
   const [drinksIngred, setDrinksIngred] = useState([]);
-  const { setMealsToMap, setRadio } = useContext(FoodContext);
-  const { setDrinksToMap } = useContext(DrinksContext);
+  const { setMeals } = useContext(FoodContext);
+  const { setDrinks } = useContext(DrinksContext);
   const twelve = 12;
   const path = window.location.pathname;
 
@@ -30,22 +30,21 @@ function ExploreIngredients() {
   }
 
   async function fetchIngredMeals(ingredient) {
-    setMealsToMap(await requestMealIngredient(ingredient));
+    setMeals(await requestMealIngredient(ingredient));
   }
 
   async function fetchIngredDrinks(ingredient) {
-    setDrinksToMap(await requestDrinkIngredient(ingredient));
+    setDrinks(await requestDrinkIngredient(ingredient));
   }
 
   function ClickMeMeals(event) {
-    setRadio('ingred');
+    // setRadio('ingred');
     fetchIngredMeals(event.target.id);
     // console.log(mealsToMap);
     // console.log(event.target.id);
   }
 
   function ClickMeDrinks(event) {
-    setRadio('ingred');
     fetchIngredDrinks(event.target.id);
   }
 
