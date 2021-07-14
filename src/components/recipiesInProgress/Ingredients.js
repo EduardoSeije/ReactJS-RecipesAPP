@@ -103,6 +103,7 @@ export default function Ingredients(props) {
             // data-testid={ `${index}-ingredient-step` }
             checked={ ingredientsInProgress.includes(ele.recipe) }
           />
+          <img src={ `https://www.themealdb.com/images/ingredients/${ele.recipe}-Small.png` } alt="ingredient" />
           { ele.recipe }
         </label>
       </div>

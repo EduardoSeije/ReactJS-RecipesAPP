@@ -34,6 +34,7 @@ export default function Ingredients(props) {
                       data-testid={ `${index}-ingredient-name-and-measure` }
                       key={ index }
                     >
+                      <img src={ `https://www.themealdb.com/images/ingredients/${recipe}-Small.png` } alt="ingredient" />
                       { `${recipe} - ${qnt}` }
                     </li>
                   ))
