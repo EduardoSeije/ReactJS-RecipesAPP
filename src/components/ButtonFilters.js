@@ -25,7 +25,13 @@ export default function ButtonFilters({ categories, functionChangeFilter,
 
   return (
     <div>
-      <button type="button" onClick={ changeFilters }>All</button>
+      <button
+        type="button"
+        onClick={ changeFilters }
+        data-testid="All-category-filter"
+      >
+        All
+      </button>
       {filtersButtons.map((category, index) => (
         <button
           type="button"

@@ -38,7 +38,7 @@ function PageTitle() {
   }
   useEffect(() => {
     title();
-  }, []);
+  }, [path]);
 
   return (
     pageTitle
